@@ -8,10 +8,10 @@
  *
  * @author Eline
  */
-public class Hello {
+public class main {
     
-    public Hello(){
-        
+    public static void main(String[] args) {
+        Address a = new Address("Wijnberg",48,3202,"Rillaar",)
     }
     
 }

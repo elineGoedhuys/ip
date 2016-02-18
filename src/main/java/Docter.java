@@ -8,11 +8,11 @@
  *
  * @author Eline
  */
-public class Doctor extends Person {
+public class Docter extends Person {
     
     private String doctorId;
     
-    public Doctor(String firstName, String lastName, String passportId, Address address, int age, String doctorId){
+    public Docter(String firstName, String lastName, String passportId, Address address, int age, String doctorId){
         super(firstName,lastName,passportId,address,age);
         this.setDoctorId(doctorId);
     }
