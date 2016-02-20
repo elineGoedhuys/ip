@@ -1,3 +1,5 @@
+package domain;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -18,42 +20,50 @@ public abstract class Person {
     
     
     public Person(String firstname,String lastname,String passportId,Address adress,int age){
-        this.setFirstName(firstname);
-        this.setLastName(lastname);
-        this.setPassportId(passportId);
-        this.setAdress(adress);
-        this.setAge(age);
+        if(firstname.equals("") || lastname.equals("") || passportId.equals("") || adress == null ||
+                age < 0){
+            throw new IllegalArgumentException("");
+        }
+        this.firstName = firstname;
+        this.lastName = lastname;
+        this.passportId = passportId;
+        this.adress = adress;
+        this.age = age;
+    }
+    
+    public Person(){
+        
     }
 
-    private void setFirstName(String firstname){
-       if (firstName.isEmpty() || firstName.equals(" ")){
+    public void setFirstName(String firstname){
+       if (firstName.isEmpty()){
           throw new IllegalArgumentException("Firstname can't be empty");
        }
        this.firstName = firstname;
     }
 
-    private void setLastName(String lastname) {
-        if (lastName.isEmpty() || lastName.equals("")){
+    public void setLastName(String lastname) {
+        if (lastName.isEmpty()){
             throw new IllegalArgumentException("Lastname can't be empty");
         }
         this.lastName = lastname;
     }
 
-    private void setPassportId(String passportId) {
-      if (passportId.isEmpty() || passportId.equals("")){
+    public void setPassportId(String passportId) {
+      if (passportId.isEmpty()){
           throw new IllegalArgumentException("passportId can't be empty");
       }
       this.passportId = passportId;
     }
 
-    private void setAdress(Address adress) {
+    public void setAdress(Address adress) {
        if (adress == null){
            throw new IllegalArgumentException();
        }
        this.adress = adress;
     }
 
-    private void setAge(int age) {
+    public void setAge(int age) {
         if(age < 0 ){
             throw new IllegalArgumentException("age can't be under 0.");
         }
@@ -84,6 +94,12 @@ public abstract class Person {
         return(person.getFirstname().equals(this.firstName) && person.getLastName().equals(this.lastName)
                 && person.getPassportId().equals(this.passportId) && person.getAdress().equals(this.adress)
                 && person.getAge() == this.age);
+    }
+    
+    public String toString(){
+        return "Firstname: " + this.getFirstname() + " Lastname: " + this.getLastName() +
+                " PassportId: " + this.getPassportId() + " Age: "+this.getAge() 
+                + " Address: " +this.getAdress().toString();
     }
     
 }

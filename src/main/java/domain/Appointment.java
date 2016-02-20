@@ -1,3 +1,5 @@
+package domain;
+
 
 import java.util.Date;
 
@@ -13,7 +15,7 @@ import java.util.Date;
  */
 public class Appointment {
     
-    private Docter docter;
+    private Doctor docter;
     private Patient patient;
     private int appointmentId;
     private static int next_Id;
@@ -22,7 +24,7 @@ public class Appointment {
     private Hospital hospital;
     
     
-    public Appointment(Docter docter, Patient patient,Date date, String place, Hospital hospital){
+    public Appointment(Doctor docter, Patient patient,Date date, String place, Hospital hospital){
         this.setDoctor(docter);
         this.setPatient(patient);
         this.setAppointmentId(next_Id++);
@@ -35,7 +37,7 @@ public class Appointment {
         return appointmentId;
     }
 
-    public Docter getDocter() {
+    public Doctor getDocter() {
         return docter;
     }
 
@@ -47,7 +49,7 @@ public class Appointment {
         this.appointmentId = appointmentId;
     }
 
-    private void setDoctor(Docter docter) {
+    private void setDoctor(Doctor docter) {
         if(docter == null){
             throw new IllegalArgumentException("Docter can't be empty.");
         }
@@ -85,6 +87,11 @@ public class Appointment {
         return hospital;
     }
     
+    public String toString(){
+        return "Appointment: "+ this.getDocter().toString() + " , "+ this.getPatient().toString()
+                + " AppointmentId: " + this.getAppointmentId() + " Hospital: " + this.getHospital().toString()
+                + " Place: " + this.getPlace() + " Date: " + this.getDate();
+    }
     
     
     

@@ -1,3 +1,5 @@
+package domain;
+
 
 import java.util.ArrayList;
 
@@ -13,17 +15,19 @@ import java.util.ArrayList;
  */
 public class Hospital {
     
-    private ArrayList<Docter> docters;
+    private ArrayList<Doctor> docters;
     private ArrayList<Patient> patients;
     private ArrayList<Appointment> appointments;
+    private String name;
     
-    public Hospital(){
+    public Hospital(String name){
         this.docters = new ArrayList<>();
         this.patients = new ArrayList<>();
         this.appointments = new ArrayList<>();
+        this.name = name;
     }
     
-    public ArrayList<Docter> getDoctors(){
+    public ArrayList<Doctor> getDoctors(){
         return this.docters;
     }
     
@@ -39,7 +43,7 @@ public class Hospital {
         this.patients.add(patient);
     }
     
-    public void addDocter(Docter docter){
+    public void addDocter(Doctor docter){
         this.docters.add(docter);
     }
     
@@ -51,15 +55,51 @@ public class Hospital {
         this.patients.remove(patient);
     }
     
-    public void removeDocter(Docter docter){
+    public void removeDocter(Doctor docter){
         this.docters.remove(docter);
     }
     
     public void removeAppointment(Appointment app){
         this.appointments.remove(app);
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        if(name.isEmpty() || name.equals("")){
+           throw new IllegalArgumentException();
+        }
+        this.name = name; 
+    }
     
+    public String stringAppointments(){
+        String out = "";
+        for(Appointment a : this.appointments){
+            out += a.toString() + "\n";
+        }
+        return out;
+    }
     
+     public String stringDocters(){
+        String out = "";
+        for(Doctor d : this.docters){
+            out += d.toString() + "\n";
+        }
+        return out;
+    }
+     
+    public String stringPatients(){
+        String out = "";
+        for(Patient p : this.patients){
+            out += p.toString() + "\n";
+        }
+        return out;
+    }
     
+    public String toStrin(){
+        return this.getName();
+    }
     
 }

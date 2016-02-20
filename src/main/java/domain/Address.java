@@ -1,3 +1,5 @@
+package domain;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -17,13 +19,17 @@ public class Address {
     private String region;
     private String country;
     
-    public Address(String street, String houseNumber, String town, String zipCode, String region){
+    public Address(String street, String houseNumber, String town, String zipCode, String region, String country){
        this.setStreet(street);
        this.setHouseNumber(houseNumber);
        this.setTown(town);
        this.setZipCode(zipCode);
        this.setRegion(region);
        this.setCountry(country);
+    }
+    
+    public Address(){
+        
     }
 
     public String getHouseNumber() {
@@ -92,9 +98,18 @@ public class Address {
         this.zipCode = zipCode;
     }
     
+    public String toString(){
+        return "Street: " + this.getStreet() + " House number: " + this.getHouseNumber()
+                + " Town: " + this.getTown() + " Zip code: " + this.getZipCode() + " Region: " + this.getRegion()
+                + " Country: " + this.getCountry();
+    }
     
 
-    
+   /** public String addressDatabaseFormat(){
+        return this.getStreet() + " ; " + this.getHouseNumber() + " ; " + this.getZipCode() + " ; "
+                + this.getTown() + " ; " + this.getRegion() + " ; " + this.getCountry()
+                + " ; " +this.getAddressId() + "\n";
+    }**/
     
     
     
