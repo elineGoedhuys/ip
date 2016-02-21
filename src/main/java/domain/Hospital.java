@@ -1,7 +1,9 @@
 package domain;
 
 
+import database.DatabaseFacade;
 import java.util.ArrayList;
+import java.util.List;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -15,71 +17,46 @@ import java.util.ArrayList;
  */
 public class Hospital {
     
-    private ArrayList<Doctor> docters;
-    private ArrayList<Patient> patients;
-    private ArrayList<Appointment> appointments;
-    private String name;
+    private List<Doctor> docters;
+    private List<Patient> patients;
+    DatabaseFacade db = new DatabaseFacade();
     
-    public Hospital(String name){
-        this.docters = new ArrayList<>();
-        this.patients = new ArrayList<>();
-        this.appointments = new ArrayList<>();
-        this.name = name;
+    
+    public Hospital(){
+        this.docters = db.getDoctors();
+        this.patients = db.getPatients();
     }
     
     public ArrayList<Doctor> getDoctors(){
-        return this.docters;
+        return (ArrayList<Doctor>) db.getDoctors();
     }
     
     public ArrayList<Patient> getPatients(){
-        return this.patients;
-    }
-    
-    public ArrayList<Appointment> getAppointments(){
-        return this.appointments;
+        return (ArrayList<Patient>) db.getPatients();
     }
     
     public void addPatient(Patient patient){
-        this.patients.add(patient);
+        db.newPatient(patient);
     }
     
     public void addDocter(Doctor docter){
-        this.docters.add(docter);
+        db.newDoctor(docter);
     }
     
-    public void addAppointment(Appointment app){
-        this.appointments.add(app);
+    public void removePatient(int patientid){
+        db.deletePatient(patientid);
     }
     
-    public void removePatient(Patient patient){
-        this.patients.remove(patient);
-    }
-    
-    public void removeDocter(Doctor docter){
-        this.docters.remove(docter);
-    }
-    
-    public void removeAppointment(Appointment app){
-        this.appointments.remove(app);
+    public void removeDocter(int doctorid){
+        db.deleteDocotor(doctorid);
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        if(name.isEmpty() || name.equals("")){
-           throw new IllegalArgumentException();
-        }
-        this.name = name; 
+    public void updateDoctor(Doctor doctor){
+        db.updateDoctor(doctor);
     }
     
-    public String stringAppointments(){
-        String out = "";
-        for(Appointment a : this.appointments){
-            out += a.toString() + "\n";
-        }
-        return out;
+    public void updatePatient(Patient patient){
+        db.updatePatient(patient);
     }
     
      public String stringDocters(){
@@ -97,9 +74,6 @@ public class Hospital {
         }
         return out;
     }
-    
-    public String toStrin(){
-        return this.getName();
-    }
+   
     
 }

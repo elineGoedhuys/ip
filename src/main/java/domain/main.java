@@ -43,7 +43,7 @@ public class main {
         
         System.out.println(ad.toString());**/
         /**Hospital h = new Hospital("uz");**/
-       DatabaseDoctorFacade db = new DatabaseDoctorFacade();
+       /**DatabaseDoctorFacade db = new DatabaseDoctorFacade();
         /**Address a = new Address ("Wijnberg", "48", "3202","Rillaar","Vlaams-Brabant","Belgium");
         Patient pr = new Patient("Eline","Goedhuys","1223",a,22);
         System.out.println(pr.toString());**/
@@ -63,12 +63,14 @@ public class main {
         /**System.out.println(db.getNextId());
         * 
         */
-        System.out.println(db.getNextId());
+        /**System.out.println(db.getNextId());
         System.out.println(db.read());
         /**Address a1 = new Address ("Wijnberg", "48", "3202","Rillaar","Vlaams-Brabant","Belgium");
         Doctor pr2 = new Doctor("Eline","Goedhuys","1223",a1,22);
         db.create(pr2);**/
-        
+        Hospital h = new Hospital();
+        System.out.println(h.getDoctors());
+        System.out.println(h.getPatients());
     }
     
     

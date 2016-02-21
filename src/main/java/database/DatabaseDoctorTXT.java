@@ -63,13 +63,13 @@ public class DatabaseDoctorTXT implements DatabaseDoctor{
                 String zipcode = sc1.next();
                 String region = sc1.next();
                 String country = sc1.next();
+                Integer age = Integer.parseInt(sc1.next());
                 Integer doctorid = Integer.parseInt(sc1.next());
                 Address address = new Address(street,housenumber,town,zipcode,region,country);
-                Doctor doctor = new Doctor(firstname,lastname,passportid,address,doctorid);
+                Doctor doctor = new Doctor(firstname,lastname,passportid,address,age,doctorid);
                 list.add(doctor);
                 sc1.close();
             }
-            
             sc.close();
             return list;
         } catch (FileNotFoundException ex) {
@@ -101,9 +101,9 @@ public class DatabaseDoctorTXT implements DatabaseDoctor{
             if(read().get(i).getDoctorId() > last){
                 last = read().get(i).getDoctorId();
             }
-        }
+        } 
         return last;
-
+       
     }
 
     @Override

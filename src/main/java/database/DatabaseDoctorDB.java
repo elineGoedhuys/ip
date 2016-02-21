@@ -61,6 +61,7 @@ public class DatabaseDoctorDB implements DatabaseDoctor {
             statement.setString(7, doctor.getAdress().getZipCode());
             statement.setString(8, doctor.getAdress().getRegion());
             statement.setString(9, doctor.getAdress().getCountry());
+            statement.setString(10, doctor.getAdress().getAge());
             statement.setInt(11, doctor.getDoctorId());
         }catch(SQLException e){
             throw new DbException(e);
@@ -88,6 +89,7 @@ public class DatabaseDoctorDB implements DatabaseDoctor {
                 address.setRegion(result.getString("region"));
                 address.setCountry(result.getString("country"));
                 doctor.setAdress(address);
+                doctor.setAge(result.getInt("age"));
                 doctor.setDoctorId(result.getInt("doctorid"));
                 list.add(doctor);
             }

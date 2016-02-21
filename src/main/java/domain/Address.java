@@ -103,6 +103,10 @@ public class Address {
                 + " Town: " + this.getTown() + " Zip code: " + this.getZipCode() + " Region: " + this.getRegion()
                 + " Country: " + this.getCountry();
     }
+
+    public String getAge() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 
    /** public String addressDatabaseFormat(){
