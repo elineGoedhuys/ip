@@ -71,6 +71,13 @@ public class main {
         Hospital h = new Hospital();
         System.out.println(h.getDoctors());
         System.out.println(h.getPatients());
+        Address a1 = new Address ("Wijnberg", "48", "3202","Rillaar","Vlaams-Brabant","Belgium");
+        Doctor dr2 = new Doctor("Eline","Goedhuys","1223",a1,22);
+        Patient pr2 = new Patient("Eline","Goedhuys","1223",a1,22);
+        h.addDocter(dr2);
+        System.out.println(h.getDoctors());
+        h.addPatient(pr2);
+        System.out.println(h.getPatients());
     }
     
     

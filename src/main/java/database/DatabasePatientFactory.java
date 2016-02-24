@@ -23,6 +23,8 @@ public class DatabasePatientFactory {
             return new DatabasePatientTXT();
         } else if (type.equalsIgnoreCase("db")){
             return new DatabasePatientDB();
+        } else if (type.equalsIgnoreCase("hash")){
+            return new DatabasePatientHashMap();
         }
         return null;
     }

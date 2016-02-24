@@ -15,7 +15,7 @@ import java.util.List;
 public class DatabasePatientRepository {
     
     private DatabasePatientFactory ft = new DatabasePatientFactory();
-    private DatabasePatient db = ft.DatabasePatientFactory("txt");
+    private DatabasePatient db = ft.DatabasePatientFactory("hash");
     
     public DatabasePatientRepository(){
         

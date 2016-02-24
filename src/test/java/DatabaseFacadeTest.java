@@ -44,9 +44,9 @@ public class DatabaseFacadeTest {
         databasefacade = new DatabaseFacade();
         this.patients = new ArrayList<Patient>();
         this.doctors = new ArrayList<Doctor>();
-        patients.add(patient);
-        doctors.add(doctor);
-        doctors.add(doctor1);
+        //patients.add(patient);
+        //doctors.add(doctor);
+        //doctors.add(doctor1);
         
     }
     
@@ -83,7 +83,8 @@ public class DatabaseFacadeTest {
     @Test
     public void test_update_doctor(){
         Doctor d = new Doctor("Eline","Goedhuys","1223",this.address,23,1);
-        List<Doctor> ds = this.doctors;
+        List<Doctor> ds = new ArrayList<>();
+        ds.add(d);
         ds.remove(0);
         ds.add(0, d);
         databasefacade.updateDoctor(d);
@@ -93,7 +94,8 @@ public class DatabaseFacadeTest {
     @Test
     public void test_update_patient(){
         Patient p = new Patient("Eline","Goedhuys","1223",address,23,1);
-        List<Patient> ps = this.patients;
+        List<Patient> ps = new ArrayList<>();
+        ps.add(p);
         ps.remove(0);
         ps.add(0, p);
         databasefacade.updatePatient(p);
@@ -103,6 +105,7 @@ public class DatabaseFacadeTest {
     @Test
     public void test_remove_doctor(){
         databasefacade.deleteDocotor(1);
+        this.doctors.add(doctor);
         this.doctors.remove(0);
         assertEquals(this.doctors,databasefacade.getDoctors());
     }
@@ -110,6 +113,7 @@ public class DatabaseFacadeTest {
     @Test
     public void test_remove_patient(){
         databasefacade.deletePatient(1);
+        this.patients.add(patient);
         this.patients.remove(0);
         assertEquals(this.patients,databasefacade.getPatients());
     }

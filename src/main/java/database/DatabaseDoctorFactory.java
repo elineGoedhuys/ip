@@ -24,6 +24,8 @@ public class DatabaseDoctorFactory {
             return new DatabaseDoctorTXT();
         } else if (type.equalsIgnoreCase("db")){
             return new DatabaseDoctorDB();
+        } else if (type.equalsIgnoreCase("hash")){
+            return new DatabaseDoctorHashMap();
         }
         return null;
     }

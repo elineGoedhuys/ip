@@ -15,7 +15,7 @@ import java.util.List;
 public class DatabaseDoctorRepository {
     
       private DatabaseDoctorFactory ft = new DatabaseDoctorFactory();
-    private DatabaseDoctor db = ft.DatabaseDoctorFactory("txt");
+    private DatabaseDoctor db = ft.DatabaseDoctorFactory("hash");
     
     public DatabaseDoctorRepository(){
         
