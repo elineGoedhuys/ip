@@ -56,6 +56,6 @@ public class Doctor extends Person {
                 this.getPassportId() + ";" + this.getAdress().getStreet() + ";" +
                 this.getAdress().getHouseNumber() + ";" + this.getAdress().getTown() + ";"
                 + this.getAdress().getZipCode() + ";" + this.getAdress().getRegion() + ";" +
-                this.getAdress().getCountry() + ";" + this.getDoctorId();
+                this.getAdress().getCountry() + ";" + this.getDoctorId() + "\n";
     }
 }
