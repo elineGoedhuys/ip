@@ -2,9 +2,9 @@ package domain;
 
 
 
-import database.DatabaseDoctorFacade;
-import database.DatabasePatientFacade;
-import database.DatabasePatientTXT;
+import database.doctor.DatabaseDoctorFacade;
+import database.patient.DatabasePatientFacade;
+import database.patient.DatabasePatientTXT;
 import java.util.Date;
 import java.util.List;
 
@@ -68,16 +68,26 @@ public class main {
         /**Address a1 = new Address ("Wijnberg", "48", "3202","Rillaar","Vlaams-Brabant","Belgium");
         Doctor pr2 = new Doctor("Eline","Goedhuys","1223",a1,22);
         db.create(pr2);**/
+        try{
         Hospital h = new Hospital();
-        System.out.println(h.getDoctors());
-        System.out.println(h.getPatients());
+        /**System.out.println(h.getDoctors());
+        System.out.println(h.getPatients());**/
         Address a1 = new Address ("Wijnberg", "48", "3202","Rillaar","Vlaams-Brabant","Belgium");
         Doctor dr2 = new Doctor("Eline","Goedhuys","1223",a1,22);
         Patient pr2 = new Patient("Eline","Goedhuys","1223",a1,22);
         h.addDocter(dr2);
-        System.out.println(h.getDoctors());
+        Date date = new Date(2015,02,15,8,10);
+        Appointment app = new Appointment(dr2,pr2,date,"H2",h);
+        ScheduleAppointment mapp = new ScheduleAppointment();
+        mapp.makeNewAppointment(app);
+        mapp.removeAppointment(app.getAppointmentId());
+        /**System.out.println(h.getDoctors());
         h.addPatient(pr2);
-        System.out.println(h.getPatients());
+        System.out.println(h.getPatients());**/
+        System.out.println(mapp.toString());
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
     }
     
     

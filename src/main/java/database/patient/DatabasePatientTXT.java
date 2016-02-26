@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package database;
+package database.patient;
 
 import domain.Address;
-import domain.Doctor;
 import domain.Patient;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -23,22 +22,22 @@ import java.util.logging.Logger;
  *
  * @author Eline
  */
-public class DatabaseDoctorTXT implements DatabaseDoctor{
+public class DatabasePatientTXT implements DatabasePatient {
 
-    File file = new File("doctor.txt");
-            
-    public DatabaseDoctorTXT(){
+    File file = new File("patient.txt");
+    
+    public DatabasePatientTXT(){
         
     }
     
     @Override
-    public void create(Doctor doctor) {
-         FileWriter fw = null;
+    public void create(Patient patient) {
+        FileWriter fw = null;
        PrintWriter pw = null;
        try{
           fw = new FileWriter(file,true);
           pw = new PrintWriter(fw);
-          pw.write(doctor.DatabaseFormat());
+          pw.write(patient.DatabaseFormat());
           pw.close();
           fw.close();
        }catch(IOException ex){
@@ -47,8 +46,8 @@ public class DatabaseDoctorTXT implements DatabaseDoctor{
     }
 
     @Override
-    public List<Doctor> read() {
-        List<Doctor> list = new ArrayList<>();
+    public List<Patient> read() {
+    List<Patient> list = new ArrayList<>();
             try{
             Scanner sc;
             sc = new Scanner(file);
@@ -63,32 +62,32 @@ public class DatabaseDoctorTXT implements DatabaseDoctor{
                 String zipcode = sc1.next();
                 String region = sc1.next();
                 String country = sc1.next();
-                Integer age = Integer.parseInt(sc1.next());
-                Integer doctorid = Integer.parseInt(sc1.next());
+                int age = Integer.parseInt(sc1.next().trim());
+                String patientid = sc1.next();
+                Integer patid = Integer.parseInt(patientid.trim());
                 Address address = new Address(street,housenumber,town,zipcode,region,country);
-                Doctor doctor = new Doctor(firstname,lastname,passportid,address,age,doctorid);
-                list.add(doctor);
+                Patient patient = new Patient(firstname,lastname,passportid,address,age,patid);
+                list.add(patient);
                 sc1.close();
             }
+            
             sc.close();
             return list;
         } catch (FileNotFoundException ex) {
             Logger.getLogger(DatabasePatientTXT.class.getName()).log(Level.SEVERE, null, ex);
         }
-      return list;    
+      return list;    }
 
+    @Override
+    public void update(Patient patient) {
+       this.delete(patient.getPatientId());
+       this.create(patient);
     }
 
     @Override
-    public void update(Doctor doctor) {
-        this.delete(doctor.getDoctorId());
-        this.create(doctor);
-    }
-
-    @Override
-    public void delete(int doctroId) {
-         for(int i = 0; i != read().size(); i++){
-            if(read().get(i).getDoctorId() == doctroId){
+    public void delete(int patientid){
+        for(int i = 0; i != read().size(); i++){
+            if(read().get(i).getPatientId() == patientid){
                 read().remove(i);
             }
         }
@@ -96,19 +95,19 @@ public class DatabaseDoctorTXT implements DatabaseDoctor{
 
     @Override
     public int getLastId() {
-                int last = 0;
+        int last = 0;
         for(int i = 0; i != read().size(); i++){
-            if(read().get(i).getDoctorId() > last){
-                last = read().get(i).getDoctorId();
+            if(read().get(i).getPatientId() > last){
+                last = read().get(i).getPatientId();
             }
-        } 
+        }
         return last;
-       
     }
 
     @Override
     public int getNextId() {
-        return getLastId()+1;
+        return this.getLastId()+1;
     }
+    
     
 }

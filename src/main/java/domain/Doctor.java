@@ -1,7 +1,7 @@
 package domain;
 
 
-import database.DatabaseDoctorFacade;
+import database.doctor.DatabaseDoctorFacade;
 import java.util.ArrayList;
 
 /*

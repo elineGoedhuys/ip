@@ -5,6 +5,8 @@
  */
 package database;
 
+import database.doctor.DatabaseDoctorFacade;
+import database.patient.DatabasePatientFacade;
 import domain.Doctor;
 import domain.Patient;
 import static java.nio.file.Files.list;

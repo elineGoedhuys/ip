@@ -1,5 +1,6 @@
-package database;
+package database.patient;
 
+import database.patient.DbException;
 import domain.Address;
 import domain.Patient;
 import java.sql.Connection;
@@ -134,6 +135,10 @@ public class DatabasePatientDB implements DatabasePatient {
 	public int getNextId(){
 		return getLastId()+1;
 	}
+
+    private void DbException(SQLException e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
         
         
 }

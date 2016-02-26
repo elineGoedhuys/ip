@@ -3,20 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package database;
+package database.patient;
 
-import domain.Doctor;
+import domain.Patient;
 import java.util.List;
 
 /**
  *
  * @author Eline
  */
-public interface DatabaseDoctor {
-     public void create(Doctor doctor);
-    public List<Doctor> read();
-    public void update(Doctor doctor);
-    public void delete(int doctroId);
+public interface DatabasePatient {
+    
+    public void create(Patient patient);
+    public List<Patient> read();
+    public void update(Patient patient);
+    public void delete(int patientid);
     public int getLastId();
     public int getNextId();
 }

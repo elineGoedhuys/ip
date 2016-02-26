@@ -1,6 +1,6 @@
 package domain;
 
-import database.DatabasePatientFacade;
+import database.patient.DatabasePatientFacade;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
