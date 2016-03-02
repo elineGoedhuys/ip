@@ -54,6 +54,11 @@ public class DatabasePatientHashMap implements DatabasePatient {
     public int getNextId() {
        return getLastId()+1;
     }
+
+    @Override
+    public Patient getPatientOnId(int patientId) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }

@@ -139,6 +139,30 @@ public class DatabasePatientDB implements DatabasePatient {
     private void DbException(SQLException e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public Patient getPatientOnId(int patientId) {
+        Patient patient = new Patient();
+        try{
+            String sql = "SELECT * from r0365524.patient where patientid = ? ";
+            statement = connection.prepareStatement(sql);
+				statement.setInt(1, patientId);
+				ResultSet result = statement.executeQuery();
+				while(result.next()){
+					patient.setPatientId(result.getInt(patientId));
+                                        patient.setFirstName(result.getString("firstname"));
+                                        patient.setLastName(result.getString("lastname"));
+                                        patient.setAge(result.getInt("age"));
+                                        patient.setPassportId(result.getString("passportid"));
+				}
+
+            
+        }catch(SQLException e){
+            throw new DbException(e.getMessage(), e);
+
+        }
+        return patient;
+    }
         
         
 }

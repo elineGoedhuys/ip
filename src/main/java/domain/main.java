@@ -2,6 +2,7 @@ package domain;
 
 
 
+import database.DatabaseFacade;
 import database.doctor.DatabaseDoctorFacade;
 import database.patient.DatabasePatientFacade;
 import database.patient.DatabasePatientTXT;
@@ -68,12 +69,12 @@ public class main {
         /**Address a1 = new Address ("Wijnberg", "48", "3202","Rillaar","Vlaams-Brabant","Belgium");
         Doctor pr2 = new Doctor("Eline","Goedhuys","1223",a1,22);
         db.create(pr2);**/
-        try{
+        /**try{
         Hospital h = new Hospital();
         /**System.out.println(h.getDoctors());
         System.out.println(h.getPatients());**/
-        Address a1 = new Address ("Wijnberg", "48", "3202","Rillaar","Vlaams-Brabant","Belgium");
-        Doctor dr2 = new Doctor("Eline","Goedhuys","1223",a1,22);
+       /** Address a1 = new Address ("Wijnberg", "48", "3202","Rillaar","Vlaams-Brabant","Belgium");
+        /**Doctor dr2 = new Doctor("Eline","Goedhuys","1223",a1,22);
         Patient pr2 = new Patient("Eline","Goedhuys","1223",a1,22);
         h.addDocter(dr2);
         Date date = new Date(2015,02,15,8,10);
@@ -84,10 +85,14 @@ public class main {
         /**System.out.println(h.getDoctors());
         h.addPatient(pr2);
         System.out.println(h.getPatients());**/
-        System.out.println(mapp.toString());
+        /**System.out.println(mapp.toString());
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
+        **/
+        DatabaseFacade df = new DatabaseFacade();
+        DatabasePatientTXT dp = new DatabasePatientTXT();
+        dp.getPatientOnId(1);
     }
     
     

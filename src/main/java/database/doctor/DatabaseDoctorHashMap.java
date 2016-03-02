@@ -10,6 +10,7 @@ import domain.Doctor;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -18,7 +19,7 @@ import java.util.List;
 public class DatabaseDoctorHashMap implements DatabaseDoctor {
     
     
-    private final HashMap<Integer, Doctor> doctors;
+    private static Map<Integer, Doctor> doctors;
 
   
     public DatabaseDoctorHashMap() {

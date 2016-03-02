@@ -18,6 +18,7 @@ public interface DatabasePatient {
     public List<Patient> read();
     public void update(Patient patient);
     public void delete(int patientid);
+    public Patient getPatientOnId(int patientId);
     public int getLastId();
     public int getNextId();
 }

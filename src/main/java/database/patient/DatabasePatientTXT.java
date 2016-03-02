@@ -108,6 +108,17 @@ public class DatabasePatientTXT implements DatabasePatient {
     public int getNextId() {
         return this.getLastId()+1;
     }
+
+    @Override
+    public Patient getPatientOnId(int patientId) {
+        ArrayList<Patient> patients = (ArrayList<Patient>) this.read();
+        for(int i = 0; i != patients.size(); i++){
+            if(patients.get(i).getPatientId() == patientId){
+                return patients.get(i);
+            }
+        }
+        throw new IllegalArgumentException("Patient can't be found");
+    }
     
     
 }
