@@ -1,7 +1,7 @@
 package domain;
 
 
-import database.DatabaseFacade;
+import service.DatabaseFacade;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +14,7 @@ import java.util.List;
 /**
  *
  * @author Eline
+ * Deze klasse wordt niet meer gebruikt
  */
 public class Hospital {
     

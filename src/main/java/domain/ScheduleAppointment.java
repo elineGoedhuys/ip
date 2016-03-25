@@ -10,6 +10,7 @@ import java.util.ArrayList;
 /**
  *
  * @author Eline
+ * Deze klasse wordt niet gebruikt.
  */
 public class ScheduleAppointment {
     
@@ -25,7 +26,7 @@ public class ScheduleAppointment {
         }
         for(int i = 0; i != appointments.size(); i++){
             if(appointments.get(i).getDate().equals(appointment.getDate())
-                    && appointments.get(i).getDocter().equals(appointment.getDocter())){
+                    && appointments.get(i).getDocterID() == (appointment.getDocterID())){
                 throw new IllegalArgumentException("You can't make an appointment at this time.");
             }
             

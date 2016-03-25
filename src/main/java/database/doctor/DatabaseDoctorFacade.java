@@ -32,7 +32,4 @@ public class DatabaseDoctorFacade {
         rp.delete(doctorid);
     }
     
-    public int getNextId(){
-        return rp.getNextId();
-    }
 }

@@ -3,19 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package database.doctor;
+package database.appointment;
 
 import database.patient.DatabasePatientTXT;
 import domain.Address;
+import domain.Appointment;
 import domain.Doctor;
-import domain.Patient;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,22 +30,22 @@ import java.util.logging.Logger;
  *
  * @author Eline
  */
-public class DatabaseDoctorTXT implements DatabaseDoctor{
+public class DatabaseAppointmentTXT implements DatabaseAppointment {
 
-    File file = new File("doctor.txt");
+    File file = new File("appointment.txt");
             
-    public DatabaseDoctorTXT(){
+    public DatabaseAppointmentTXT(){
         
     }
     
     @Override
-    public void create(Doctor doctor) {
-         FileWriter fw = null;
+    public void create(Appointment appointment) {
+       FileWriter fw = null;
        PrintWriter pw = null;
        try{
           fw = new FileWriter(file,true);
           pw = new PrintWriter(fw);
-          pw.write(doctor.DatabaseFormat());
+          pw.write(appointment.DatabaseFormat());
           pw.close();
           fw.close();
        }catch(IOException ex){
@@ -48,27 +54,21 @@ public class DatabaseDoctorTXT implements DatabaseDoctor{
     }
 
     @Override
-    public List<Doctor> read() {
-        List<Doctor> list = new ArrayList<>();
+    public List<Appointment> read() 
+   {
+       List<Appointment> list = new ArrayList<>();
             try{
             Scanner sc;
             sc = new Scanner(file);
             while(sc.hasNextLine()){
                 Scanner sc1 = new Scanner(sc.nextLine()).useDelimiter(";");
-                String firstname = sc1.next();
-                String lastname = sc1.next();
-                String passportid = sc1.next();
-                String street = sc1.next();
-                String housenumber = sc1.next();
-                String town = sc1.next();
-                String zipcode = sc1.next();
-                String region = sc1.next();
-                String country = sc1.next();
-                Integer age = Integer.parseInt(sc1.next());
-                Integer doctorid = Integer.parseInt(sc1.next());
-                Address address = new Address(street,housenumber,town,zipcode,region,country);
-                Doctor doctor = new Doctor(firstname,lastname,passportid,address,age,doctorid);
-                list.add(doctor);
+                Integer appointmentId = Integer.parseInt(sc1.next());
+                Integer docterid = Integer.parseInt(sc1.next());
+                Integer patientid = Integer.parseInt(sc1.next());
+                String date = sc1.next();
+                String place = sc1.next();
+                Appointment app = new Appointment(appointmentId,docterid,patientid,date,place);
+                list.add(app);
                 sc1.close();
             }
             sc.close();
@@ -77,19 +77,18 @@ public class DatabaseDoctorTXT implements DatabaseDoctor{
             Logger.getLogger(DatabasePatientTXT.class.getName()).log(Level.SEVERE, null, ex);
         }
       return list;    
-
     }
 
     @Override
-    public void update(Doctor doctor) {
-        this.delete(doctor.getDoctorId());
-        this.create(doctor);
+    public void update(Appointment appointment) {
+        this.delete(appointment.getAppointmentId());
+        this.create(appointment);
     }
 
     @Override
-    public void delete(int doctroId) {
-         for(int i = 0; i != read().size(); i++){
-            if(read().get(i).getDoctorId() == doctroId){
+    public void delete(int appointmentId) {
+        for(int i = 0; i != read().size(); i++){
+            if(read().get(i).getAppointmentId() == appointmentId){
                 read().remove(i);
             }
         }

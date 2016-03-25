@@ -43,7 +43,5 @@ public class DatabaseDoctorRepository {
         db.delete(doctorid);
     }
     
-    public int getNextId(){
-        return db.getNextId();
-    }
+ 
 }

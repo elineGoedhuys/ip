@@ -15,55 +15,59 @@ import java.util.Date;
  */
 public class Appointment {
     
-    private Doctor docter;
-    private Patient patient;
+    private int docterID;
+    private int patientID;
     private int appointmentId;
     private static int next_Id;
-    private Date date;
+    private String date;
     private String place;
-    private Hospital hospital;
+
     
     
-    public Appointment(Doctor docter, Patient patient,Date date, String place, Hospital hospital){
-        this.setDoctor(docter);
-        this.setPatient(patient);
-        this.setAppointmentId(next_Id++);
+    public Appointment(int appointmentID,int docterID, int patientID,String date, String place){
+        this.setDoctorID(docterID);
+        this.setPatientID(patientID);
+        this.setAppointmentId(appointmentID);
         this.setPlace(place);
         this.setDate(date);
-        this.setHospital(hospital);
+
+    }
+
+    public Appointment() {
+       
     }
 
     public int getAppointmentId() {
         return appointmentId;
     }
 
-    public Doctor getDocter() {
-        return docter;
+    public int getDocterID() {
+        return docterID;
     }
 
-    public Patient getPatient() {
-        return patient;
+    public int getPatientID() {
+        return patientID;
     }
 
-    private void setAppointmentId(int appointmentId) {
+    public void setAppointmentId(int appointmentId) {
         this.appointmentId = appointmentId;
     }
 
-    private void setDoctor(Doctor docter) {
-        if(docter == null){
+    public void setDoctorID(int docterID) {
+        if(docterID < 0){
             throw new IllegalArgumentException("Docter can't be empty.");
         }
-        this.docter = docter;
+        this.docterID = docterID;
     }
 
-    private void setPatient(Patient patient) {
-        if (patient == null){
+    public void setPatientID(int patientID) {
+        if (patientID < 0){
             throw new IllegalArgumentException("Patient can't be empty.");
         }
-        this.patient = patient;
+        this.patientID = patientID;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
@@ -71,29 +75,25 @@ public class Appointment {
         return place;
     }
 
-    private void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    private void setPlace(String place) {
+    public void setPlace(String place) {
         this.place = place;
     }
 
-    public void setHospital(Hospital hospital) {
-        this.hospital = hospital;
-    }
-
-    public Hospital getHospital() {
-        return hospital;
-    }
     
     public String toString(){
-        return "Appointment: "+ this.getDocter().toString() + " , "+ this.getPatient().toString()
-                + " AppointmentId: " + this.getAppointmentId() + " Hospital: " + this.getHospital().toString()
+        return "Appointment: "+ this.getDocterID()+ " , "+ this.getPatientID()
+                + " AppointmentId: " + this.getAppointmentId()
                 + " Place: " + this.getPlace() + " Date: " + this.getDate();
     }
-    
-    
-    
+
+    public String DatabaseFormat() {
+       return this.getAppointmentId() + ";" + this.getDocterID() + ";" + this.getPatientID()
+               + ";" + this.getDate() + ";" + this.getPlace() + "\n";
+    }
+              
     
 }

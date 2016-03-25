@@ -18,9 +18,13 @@ import java.util.List;
 public class DatabasePatientHashMap implements DatabasePatient {
 
     private HashMap<Integer,Patient> patients;
+    private Address address = new Address("Wijnberg", "48", "Rillaar", "3202", "Vlaams-Brabant", "Belgium");
+    private Patient patient = new Patient("Eline", "Goedhuys","1203553", address, 22, 123);
 
     public DatabasePatientHashMap() {
         this.patients = new HashMap<Integer,Patient>();
+        create(patient);
+        
     }
     
     @Override
@@ -46,19 +50,18 @@ public class DatabasePatientHashMap implements DatabasePatient {
     }
 
     @Override
+    public Patient getPatientOnId(int patientId) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
     public int getLastId() {
-       return 1;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public int getNextId() {
-       return getLastId()+1;
-    }
-
-    @Override
-    public Patient getPatientOnId(int patientId) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
+
 }

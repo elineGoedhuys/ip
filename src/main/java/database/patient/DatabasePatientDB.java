@@ -31,7 +31,7 @@ public class DatabasePatientDB implements DatabasePatient {
         String url = "jdbc:postgresql://gegevensbanken.khleuven.be:51516/2TX33";
         Properties properties = new Properties();
         properties.setProperty("user", "r0365524");
-        properties.setProperty("password", "r0365524");
+        properties.setProperty("password", "EgMdMd0110");
         properties.setProperty("ssl", "true");
         properties.setProperty("sslfactory", "org.postgresql.ssl.NonValidatingFactory");
         try{
@@ -49,20 +49,21 @@ public class DatabasePatientDB implements DatabasePatient {
         if(patient == null){
             throw new DbException("Nothing to add.");
         }try{
-            String sql = "INSERT INTO r0365524.patient (firstname, lastname, passportid ,street, housenumber, town, zipcode, region, country, age, patientid)"
+            String sql = "INSERT INTO r0365524.patient (patientid, firstname, lastname, passportid ,street, housenumber, town, zipcode, region, country, age)"
                         + "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
             statement = connection.prepareStatement(sql);
-            statement.setString(1, patient.getFirstname());
-            statement.setString(2, patient.getLastName());
-            statement.setString(3, patient.getPassportId());
-            statement.setString(4, patient.getAdress().getStreet());
-            statement.setString(5, patient.getAdress().getHouseNumber());
-            statement.setString(6, patient.getAdress().getTown());
-            statement.setString(7, patient.getAdress().getZipCode());
-            statement.setString(8, patient.getAdress().getRegion());
-            statement.setString(9, patient.getAdress().getCountry());
-            statement.setInt(10, patient.getAge());
-            statement.setInt(11, patient.getPatientId());
+            statement.setInt(1,patient.getPatientId());
+            statement.setString(2, patient.getFirstname());
+            statement.setString(3, patient.getLastName());
+            statement.setString(4, patient.getPassportId());
+            statement.setString(5, patient.getAdress().getStreet());
+            statement.setString(6, patient.getAdress().getHouseNumber());
+            statement.setString(7, patient.getAdress().getTown());
+            statement.setString(8, patient.getAdress().getZipCode());
+            statement.setString(9, patient.getAdress().getRegion());
+            statement.setString(10, patient.getAdress().getCountry());
+            statement.setInt(11, patient.getAge());
+           
         }catch(SQLException e){
             throw new DbException(e);
         }

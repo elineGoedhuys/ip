@@ -2,7 +2,8 @@ package domain;
 
 
 
-import database.DatabaseFacade;
+import service.DatabaseFacade;
+import database.appointment.DatabaseAppointmentFacade;
 import database.doctor.DatabaseDoctorFacade;
 import database.patient.DatabasePatientFacade;
 import database.patient.DatabasePatientTXT;
@@ -90,9 +91,25 @@ public class main {
             System.out.println(e.getMessage());
         }
         **/
-        DatabaseFacade df = new DatabaseFacade();
+        /**DatabaseFacade df = new DatabaseFacade();
         DatabasePatientTXT dp = new DatabasePatientTXT();
-        dp.getPatientOnId(1);
+        dp.getPatientOnId(1);**/
+        
+     
+            Address a1 = new Address ("Wijnberg", "48", "3202","Rillaar","Vlaams-Brabant","Belgium");
+            Doctor d = new Doctor("Eline","Goedhuys","1223",a1,22,334456);
+            Patient p = new Patient("Eline","Goedhuys","1223",a1,22,3467);
+            String date = new String("12 maart 2017");        
+            /**Appointment app = new Appointment(123,d.getDoctorId(),p.getPatientId(),date,"somewhere");
+            DatabaseAppointmentFacade facade = new DatabaseAppointmentFacade();
+            facade.makeNewAppointment(app);
+            System.out.println(facade.getAllAppointments().toString());
+            System.out.println(app.getAppointmentId());**/
+            DatabaseFacade facade = new DatabaseFacade();
+            facade.newDoctor(d);
+            System.out.println(facade.getPatients());
+            System.out.println(facade.getDoctors());
+           
     }
     
     

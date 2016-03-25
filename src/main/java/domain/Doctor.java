@@ -17,16 +17,12 @@ import java.util.ArrayList;
 public class Doctor extends Person {
     
     private int doctorId;
-    private DatabaseDoctorFacade db = new DatabaseDoctorFacade();
+   
     
     public Doctor(){
         
     }
     
-     public Doctor(String firstName, String lastName, String passportId, Address address, int age){
-        super(firstName,lastName,passportId,address,age);
-        this.setDoctorId(getNextId());
-    }
     
     public Doctor(String firstName, String lastName, String passportId, Address address, int age, int doctorId){
         super(firstName,lastName,passportId,address,age);
@@ -41,9 +37,6 @@ public class Doctor extends Person {
         return doctorId;
     }
     
-    private int getNextId(){
-        return db.getNextId();
-    }
 
     
     public String toString(){
@@ -56,6 +49,6 @@ public class Doctor extends Person {
                 this.getPassportId() + ";" + this.getAdress().getStreet() + ";" +
                 this.getAdress().getHouseNumber() + ";" + this.getAdress().getTown() + ";"
                 + this.getAdress().getZipCode() + ";" + this.getAdress().getRegion() + ";" +
-                this.getAdress().getCountry() + ";" + this.getDoctorId() + "\n";
+                this.getAdress().getCountry() + ";" + this.getAge() + ";" + this.getDoctorId() + "\n";
     }
 }

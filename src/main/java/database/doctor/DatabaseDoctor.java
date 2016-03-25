@@ -13,10 +13,8 @@ import java.util.List;
  * @author Eline
  */
 public interface DatabaseDoctor {
-     public void create(Doctor doctor);
+    public void create(Doctor doctor);
     public List<Doctor> read();
     public void update(Doctor doctor);
     public void delete(int doctroId);
-    public int getLastId();
-    public int getNextId();
 }

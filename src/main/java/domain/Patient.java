@@ -15,12 +15,7 @@ import database.patient.DatabasePatientFacade;
 public class Patient extends Person{
     
     private int patientId;
-    private DatabasePatientFacade db = new DatabasePatientFacade();
     
-    public Patient(String firstName, String lastName, String passportId, Address adress, int age){
-        super(firstName,lastName,passportId,adress,age);
-        this.setPatientId(getNext_id());
-    }
     public Patient(String firstName, String lastName, String passportId, Address adress, int age,int patientId){
         super(firstName,lastName,passportId,adress,age);
         this.setPatientId(patientId);
@@ -41,9 +36,6 @@ public class Patient extends Person{
         return this.patientId;
     }
 
-    private int getNext_id() {
-        return db.getNextId();
-    }
     
     
     public String toString(){

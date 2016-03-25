@@ -30,7 +30,7 @@ public class DatabaseDoctorDB implements DatabaseDoctor {
         String url = "jdbc:postgresql://gegevensbanken.khleuven.be:51516/2TX33";
         Properties properties = new Properties();
         properties.setProperty("user", "r0365524");
-        properties.setProperty("password", "r0365524");
+        properties.setProperty("password", "EgMdMd0110");
         properties.setProperty("ssl", "true");
         properties.setProperty("sslfactory", "org.postgresql.ssl.NonValidatingFactory");
         try{
@@ -70,7 +70,7 @@ public class DatabaseDoctorDB implements DatabaseDoctor {
 
     @Override
     public List<Doctor> read() {
-         List<Doctor> list;
+        List<Doctor> list;
         list = new ArrayList<>();
         try{
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM r0365524.doctor");
@@ -117,24 +117,6 @@ public class DatabaseDoctorDB implements DatabaseDoctor {
         }
     }
 
-    @Override
-    public int getLastId() {
-        int lastId = 0;
-	try{
-		PreparedStatement statement = connection.prepareStatement("SELECT doctorid FROM doctor ORDER BY doctorid DESC fetch first row only");
-		ResultSet result = statement.executeQuery();
-		while(result.next()){			
-                lastId = Integer.parseInt(result.getString("doctorid"));
-		}
-		}catch(SQLException e){
-		throw new DbException(e);
-		}
-		return lastId;
-    }
 
-    @Override
-    public int getNextId() {
-        return getLastId()+1;
-    }
     
 }

@@ -24,6 +24,7 @@ public class DatabaseDoctorHashMap implements DatabaseDoctor {
   
     public DatabaseDoctorHashMap() {
         this.doctors = new HashMap<Integer,Doctor>();
+        
     }
 
    
@@ -50,14 +51,5 @@ public class DatabaseDoctorHashMap implements DatabaseDoctor {
         this.doctors.remove(doctroId);
     }
 
-    @Override
-    public int getLastId() {
-      return 1;
-    }
-
-    @Override
-    public int getNextId() {
-       return getLastId()+1;
-    }
     
 }
