@@ -28,11 +28,15 @@ public class DatabasePatientFacade {
         rp.update(patient);
     }
     
-    public void delete(int patientid){
+    public void delete(long patientid){
         rp.delete(patientid);
     }
     
-    public int getNextId(){
-        return rp.getNextId();
+    public Patient getPatientOnId(long patientId){
+        return rp.getPatientOnId(patientId);
+    }
+    
+    public void close(){
+        rp.close();
     }
 }

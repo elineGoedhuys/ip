@@ -2,7 +2,12 @@ package domain;
 
 
 import database.doctor.DatabaseDoctorFacade;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Set;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -14,18 +19,27 @@ import java.util.ArrayList;
  *
  * @author Eline
  */
-public class Doctor extends Person {
+@Entity
+public class Doctor extends Person implements Serializable {
     
-    private int doctorId;
+    
+   public Doctor(long id,String firstName, String lastName, String passportId,Address address , int age){
+        super(id,firstName,lastName,passportId,address,age);
+    }
    
+   public Doctor(String firstName, String lastName, String passportId,Address address, int age){
+        super(firstName,lastName,passportId,address,age);
+    }
     
     public Doctor(){
         
     }
     
     
-    public Doctor(String firstName, String lastName, String passportId, Address address, int age, int doctorId){
-        super(firstName,lastName,passportId,address,age);
+    
+    
+   /** public Doctor(String lastName, String passportId, Address address, int age, int doctorId){
+        super(lastName,passportId,address,age);
         this.setDoctorId(doctorId);
     }
 
@@ -35,20 +49,19 @@ public class Doctor extends Person {
 
     public int getDoctorId() {
         return doctorId;
-    }
+    }**/
     
 
     
-    public String toString(){
-        return "Doctor: " + super.toString() + " DoctorId: " + this.getDoctorId();
-    }
+    /****/
     
   
-    public String DatabaseFormat() {
-        return this.getFirstname() + ";" + this.getLastName() + ";" + 
-                this.getPassportId() + ";" + this.getAdress().getStreet() + ";" +
-                this.getAdress().getHouseNumber() + ";" + this.getAdress().getTown() + ";"
-                + this.getAdress().getZipCode() + ";" + this.getAdress().getRegion() + ";" +
-                this.getAdress().getCountry() + ";" + this.getAge() + ";" + this.getDoctorId() + "\n";
+   public String DatabaseFormat() {
+       /** return this.getFirstName() + ";" + this.getLastName() + ";" + 
+                this.getPassportId() + ";" + this.getAddress().getStreet() + ";" +
+                this.getAddress().getHouseNumber() + ";" + this.getAddress().getTown() + ";"
+                + this.getAddress().getZipCode() + ";" + this.getAddress().getRegion() + ";" +
+                this.getAddress().getCountry() + ";" + this.getAge() + ";" + this.getId() + "\n";**/
+       return null;
     }
 }

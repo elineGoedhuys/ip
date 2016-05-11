@@ -19,19 +19,22 @@ import java.util.Map;
 public class DatabaseDoctorHashMap implements DatabaseDoctor {
     
     
-    private static Map<Integer, Doctor> doctors;
+    private static Map<Long, Doctor> doctors;
+   /** private final Doctor doctor;**/
+    /**private Address address = new Address("Wilrijkstraat","10","Edegem","2650","Antwerp","Belgium");**/
 
   
     public DatabaseDoctorHashMap() {
-        this.doctors = new HashMap<Integer,Doctor>();
-        
+        /**this.doctor = new Doctor("Jan","Janssens","12347357",address,55,102);**/
+        this.doctors = new HashMap<Long,Doctor>();
+        /**create(doctor);**/
     }
 
    
     
     @Override
     public void create(Doctor doctor) {
-       this.doctors.put(doctor.getDoctorId(), doctor);
+       this.doctors.put(doctor.getId(), doctor);
     }
 
     @Override
@@ -42,14 +45,30 @@ public class DatabaseDoctorHashMap implements DatabaseDoctor {
 
     @Override
     public void update(Doctor doctor) {
-        this.doctors.remove(doctor.getDoctorId(), doctor);
-        this.doctors.put(doctor.getDoctorId(), doctor);
+        this.doctors.remove(doctor.getId(), doctor);
+        this.doctors.put(doctor.getId(), doctor);
     }
 
     @Override
-    public void delete(int doctroId) {
+    public void delete(long doctroId) {
         this.doctors.remove(doctroId);
     }
 
+    @Override
+    public Doctor getDoctorOnId(long doctorId) {
+    List<Doctor> doctors1 = this.read();
+        for(int i= 0; i != doctors1.size(); i++){
+            if(doctors1.get(i).getId() == doctorId){
+                return doctors1.get(i);
+            }
+        }
+        return null;    
+    
+    }
+
+    @Override
+    public void close() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

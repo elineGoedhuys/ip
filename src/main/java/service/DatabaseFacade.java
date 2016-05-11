@@ -5,13 +5,17 @@
  */
 package service;
 
+import database.address.DatabaseAddressFactory;
+import database.address.DatabaseAddressRepository;
 import database.appointment.DatabaseAppointmentFacade;
 import database.appointment.DatabaseAppointmentFactory;
 import database.doctor.DatabaseDoctorFacade;
 import database.doctor.DatabaseDoctorFactory;
 import database.patient.DatabasePatientFacade;
 import database.patient.DatabasePatientFactory;
+import domain.Address;
 import domain.Appointment;
+import domain.Appointment1;
 import domain.Doctor;
 import domain.Patient;
 import static java.nio.file.Files.list;
@@ -27,26 +31,31 @@ public class DatabaseFacade {
     private DatabaseDoctorFacade doctorfacade;
     private DatabasePatientFacade patientfacade;
     private DatabaseAppointmentFacade appointmentfacade;
+    private DatabaseAddressRepository addressfacade;
     private DatabaseAppointmentFactory appointmentfactory;
     private DatabaseDoctorFactory doctorfactory;
     private DatabasePatientFactory patientfactory;
+    private DatabaseAddressFactory addressfactory;
     
             
     public void switchDatabse(String type){
         appointmentfactory.DatabaseAppointmentFactory(type);
         doctorfactory.DatabaseDoctorFactory(type);
         patientfactory.DatabasePatientFactory(type);
+        addressfactory.DatabaseAddressFactory(type);
     }
     public DatabaseFacade(){
         doctorfacade = new DatabaseDoctorFacade();
         patientfacade = new DatabasePatientFacade();
         appointmentfacade = new DatabaseAppointmentFacade();
+        addressfacade = new DatabaseAddressRepository();
     }
    
     public DatabaseFacade(String type){
         doctorfacade = new DatabaseDoctorFacade();
         patientfacade = new DatabasePatientFacade();
         appointmentfacade = new DatabaseAppointmentFacade();
+        addressfacade = new DatabaseAddressRepository();
     }
     
     public List<Doctor> getDoctors(){
@@ -81,11 +90,11 @@ public class DatabaseFacade {
         patientfacade.delete(p);
     }
     
-    public void makeAppointment(Appointment appointment){
+    public void makeAppointment(Appointment1 appointment){
         appointmentfacade.makeNewAppointment(appointment);
     }
     
-    public List<Appointment> getAllAppointments(){
+    public List<Appointment1> getAllAppointments(){
         return appointmentfacade.getAllAppointments();
     }
     
@@ -93,8 +102,54 @@ public class DatabaseFacade {
         appointmentfacade.deleteAppointment(appointmentID);
     }
     
-    public void updateAppointment(Appointment appointment){
+    public void updateAppointment(Appointment1 appointment){
         appointmentfacade.updateAppointment(appointment);
     }
     
+    public Patient getPatientOnId(int patientId){
+        return patientfacade.getPatientOnId(patientId);
+    }
+    
+    public Doctor getDoctorOnId(int doctorId){
+        return doctorfacade.getDoctorOnId(doctorId);
+    }
+    
+    public Appointment1 getAppointmentOnId(int appointmentId){
+        return appointmentfacade.getAppointmentOnId(appointmentId);
+    }
+    
+    public void newAddress(Address address){
+        addressfacade.create(address);
+    }
+    
+    public void removeAddress(int addresId){
+        addressfacade.delete(addresId);
+    }
+    
+    public void updateAddress(Address address){
+        addressfacade.update(address);
+    }
+    
+    public List<Address> getAllAddresses(){
+        return addressfacade.read();
+    }
+    
+    public Address getAddress(int addressId){
+        return addressfacade.getAddressOnId(addressId);
+    }
+    
+    /**public List<Appointment1> findAppointment(int patientId){
+        return appointmentfacade.findAppointment(patientId);
+    }**/
+    
+    public void close(){
+        patientfacade.close();
+        doctorfacade.close();
+        addressfacade.close();
+        appointmentfacade.close();
+    }
+
+    public Object findAppointment(String patientId) {
+        return appointmentfacade.findAppointment(patientId);
+    }
 }

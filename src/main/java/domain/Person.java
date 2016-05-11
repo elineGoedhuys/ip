@@ -1,105 +1,139 @@
-package domain;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package domain;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
  * @author Eline
  */
+@MappedSuperclass
 public abstract class Person {
     
+    /**@JsonIgnoreProperties**/
+    @Id
+    @GeneratedValue
+    private long id;
     private String firstName;
     private String lastName;
     private String passportId;
-    private Address adress;
     private int age;
-    
-    
-    public Person(String firstname,String lastname,String passportId,Address adress,int age){
-        if(firstname.equals("") || lastname.equals("") || passportId.equals("") || adress == null ||
-                age < 0){
-            throw new IllegalArgumentException("");
-        }
-        this.firstName = firstname;
-        this.lastName = lastname;
+    @OneToOne(cascade={CascadeType.PERSIST},fetch=FetchType.LAZY)
+    @JoinColumn(name="ADRESS_ID")
+    /**@JsonManagedReference**/
+    private Address address;
+  
+
+    public Person( long id,String firstName, String lastName, String passportId,Address address, int age) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.passportId = passportId;
-        this.adress = adress;
         this.age = age;
+        this.address = address;
+   
     }
+
+      public Person(String firstName, String lastName, String passportId,Address address,int age) {
     
-    public Person(){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.passportId = passportId;
+        this.age = age;
+        this.address = address;
         
     }
+    
+    public Person() {
+    }
+    
+ 
 
-    public void setFirstName(String firstname){
-       if (firstName.isEmpty()){
-          throw new IllegalArgumentException("Firstname can't be empty");
-       }
-       this.firstName = firstname;
+    public int getAge() {
+        return age;
     }
 
-    public void setLastName(String lastname) {
-        if (lastName.isEmpty()){
-            throw new IllegalArgumentException("Lastname can't be empty");
-        }
-        this.lastName = lastname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setPassportId(String passportId) {
-      if (passportId.isEmpty()){
-          throw new IllegalArgumentException("passportId can't be empty");
-      }
-      this.passportId = passportId;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setAdress(Address adress) {
-       if (adress == null){
-           throw new IllegalArgumentException();
-       }
-       this.adress = adress;
+    public String getPassportId() {
+        return passportId;
     }
 
     public void setAge(int age) {
-        if(age < 0 ){
-            throw new IllegalArgumentException("age can't be under 0.");
-        }
         this.age = age;
     }
-    
-    public String getFirstname(){
-        return this.firstName;
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setPassportId(String passportId) {
+        this.passportId = passportId;
+    }
+
+    public long getId(){
+        return id;
     }
     
-    public String getLastName(){
-        return this.lastName;
+    public void setId(long id){
+        this.id = id;
     }
-    
-    public String getPassportId(){
-        return this.passportId;
+
+    @JsonIgnore
+    public Address getAddress() {
+        return address;
     }
-    
-    public Address getAdress(){
-        return this.adress;
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
+
+ 
     
-    public int getAge(){
-        return this.age;
-    }
     
-    public boolean equals(Person person){
-        return(person.getFirstname().equals(this.firstName) && person.getLastName().equals(this.lastName)
-                && person.getPassportId().equals(this.passportId) && person.getAdress().equals(this.adress)
+    
+            
+            
+      public boolean equals(Person person){
+        return(person.getFirstName().equals(this.firstName) && person.getLastName().equals(this.lastName)
+                && person.getPassportId().equals(this.passportId) 
                 && person.getAge() == this.age);
     }
     
-    public String toString(){
-        return "Firstname: " + this.getFirstname() + " Lastname: " + this.getLastName() +
+    /**public String toString(){
+        return "Firstname: " + this.getFirstName() + " Lastname: " + this.getLastName() +
                 " PassportId: " + this.getPassportId() + " Age: "+this.getAge() 
-                + " Address: " +this.getAdress().toString();
-    }
+                + " Address: " +this.getAddress().toString();
+    }**/
     
 }
+
+   

@@ -30,6 +30,10 @@ public class DatabaseAppointmentFactory {
             return new DatabaseAppointmentTXT();
         } else if (type.equalsIgnoreCase("db")){
             return new DatabaseAppointmentDB();
+        } else if(type.equalsIgnoreCase("hash")){
+            return new DatabaseAppointmentHashMap();
+        } else if (type.equalsIgnoreCase("JPA")){
+            return new AppointmentRelationalDatabase("HospitalPU");
         }
         return null;
     }

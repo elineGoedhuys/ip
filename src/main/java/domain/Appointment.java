@@ -15,21 +15,24 @@ import java.util.Date;
  */
 public class Appointment {
     
-    private int docterID;
-    private int patientID;
+    
+    private int patientId;
     private int appointmentId;
     private static int next_Id;
     private String date;
+    private String hour;
     private String place;
+    private int doctorId;
 
     
     
-    public Appointment(int appointmentID,int docterID, int patientID,String date, String place){
-        this.setDoctorID(docterID);
-        this.setPatientID(patientID);
-        this.setAppointmentId(appointmentID);
+    public Appointment(int appointmentId,int doctorId, int patientId, String date, String hour ,String place){
+        this.setPatientId(patientId);
+        this.setAppointmentId(appointmentId);
+        this.setDoctorId(doctorId);
         this.setPlace(place);
         this.setDate(date);
+        this.setHour(hour);
 
     }
 
@@ -41,30 +44,34 @@ public class Appointment {
         return appointmentId;
     }
 
-    public int getDocterID() {
-        return docterID;
+    public int getDoctorId() {
+        return doctorId;
     }
 
-    public int getPatientID() {
-        return patientID;
+    public int getPatientId() {
+        return patientId;
+    }
+
+    public String getHour() {
+        return hour;
     }
 
     public void setAppointmentId(int appointmentId) {
         this.appointmentId = appointmentId;
     }
 
-    public void setDoctorID(int docterID) {
-        if(docterID < 0){
+    public void setDoctorId(int doctorId) {
+        if(doctorId < 0){
             throw new IllegalArgumentException("Docter can't be empty.");
         }
-        this.docterID = docterID;
+        this.doctorId = doctorId;
     }
 
-    public void setPatientID(int patientID) {
-        if (patientID < 0){
+    public void setPatientId(int patientId) {
+        if (patientId < 0){
             throw new IllegalArgumentException("Patient can't be empty.");
         }
-        this.patientID = patientID;
+        this.patientId = patientId;
     }
 
     public String getDate() {
@@ -85,14 +92,18 @@ public class Appointment {
 
     
     public String toString(){
-        return "Appointment: "+ this.getDocterID()+ " , "+ this.getPatientID()
+        return "Appointment: "+ this.getDoctorId()+ " , "+ this.getPatientId()
                 + " AppointmentId: " + this.getAppointmentId()
                 + " Place: " + this.getPlace() + " Date: " + this.getDate();
     }
 
     public String DatabaseFormat() {
-       return this.getAppointmentId() + ";" + this.getDocterID() + ";" + this.getPatientID()
+       return this.getAppointmentId() + ";" + this.getDoctorId() + ";" + this.getPatientId()
                + ";" + this.getDate() + ";" + this.getPlace() + "\n";
+    }
+
+    public void setHour(String hour) {
+         this.hour = hour;
     }
               
     

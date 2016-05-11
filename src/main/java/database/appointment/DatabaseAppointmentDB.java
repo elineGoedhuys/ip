@@ -8,6 +8,7 @@ package database.appointment;
 
 import domain.Address;
 import domain.Appointment;
+import domain.Appointment1;
 import domain.Doctor;
 import domain.Patient;
 import java.sql.Connection;
@@ -46,37 +47,39 @@ public class DatabaseAppointmentDB implements DatabaseAppointment{
         }
     }
     @Override
-    public void create(Appointment appointment) {
+    public void create(Appointment1 appointment) {
         if(appointment == null){
             throw new DbException("Nothing to add.");
         }try{
-            String sql = "INSERT INTO r0365524.appointments (appointmentid, doctorid, patientid, date, place)"
+            String sql = "INSERT INTO r0365524.appointments (appointmentid, doctorid, patientid, date, hour, place)"
                         + "VALUES (?,?,?,?,?)";
             statement = connection.prepareStatement(sql);
-            statement.setInt(1, appointment.getAppointmentId());
-            statement.setInt(2, appointment.getDocterID());
-            statement.setInt(3, appointment.getPatientID());
+            statement.setLong(1, appointment.getAppointmentId());
+            statement.setInt(2, appointment.getDoctorId());
+            statement.setInt(3, appointment.getPatientId());
             statement.setString(4, appointment.getDate());
-            statement.setString(5, appointment.getPlace());
+            statement.setString(5,appointment.getUur());
+            statement.setString(6, appointment.getPlace());
         }catch(SQLException e){
             throw new DbException(e);
         }
     }
 
     @Override
-    public List<Appointment> read() {
-        List<Appointment> list;
+    public List<Appointment1> read() {
+        List<Appointment1> list;
         list = new ArrayList<>();
         try{
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM r0365524.appointments");
             ResultSet result = statement.executeQuery();
             while (result.next()){
-                Appointment app = new Appointment();
+                Appointment1 app = new Appointment1();
                 app.setAppointmentId(result.getInt("appointmentid"));
-                app.setDoctorID(result.getInt("doctorid"));
-                app.setPatientID(result.getInt("patientid"));
+                app.setDoctorId(result.getInt("doctorid"));
+                app.setPatientId(result.getInt("patientid"));
                 app.setPlace(result.getString("place"));
                 app.setDate(result.getString("date"));
+                app.setUur(result.getString("hour"));
                 list.add(app);
             }
         }catch(SQLException e){
@@ -86,22 +89,34 @@ public class DatabaseAppointmentDB implements DatabaseAppointment{
     }
 
     @Override
-    public void update(Appointment appointment) {
+    public void update(Appointment1 appointment) {
         this.delete(appointment.getAppointmentId());
         this.create(appointment);
     }
 
     @Override
-    public void delete(int appointmentId) {
+    public void delete(long appointmentId) {
         try{
             String sql = "DELETE FROM 2TX33_r0365524.appointments where appointmentid = ?";
             statement = connection.prepareStatement(sql);
-            statement.setInt(1, appointmentId);
+            statement.setLong(1, appointmentId);
             statement.executeUpdate();
         }catch(SQLException e){
             throw new DbException(e);
         }
     }
+
+    @Override
+    public Appointment1 getAppointment(long appointmentId) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void close() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+   
     
     
     

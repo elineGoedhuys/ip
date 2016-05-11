@@ -6,6 +6,7 @@
 package database.appointment;
 
 import domain.Appointment;
+import domain.Appointment1;
 import java.util.List;
 
 /**
@@ -13,8 +14,11 @@ import java.util.List;
  * @author Eline
  */
 public interface DatabaseAppointment {
-    public void create(Appointment appointment);
-    public List<Appointment> read();
-    public void update(Appointment appointment);
-    public void delete(int appointmentId);
+    public void create(Appointment1 appointment);
+    public List<Appointment1> read();
+    public void update(Appointment1 appointment);
+    public void delete(long appointmentId);
+    public Appointment1 getAppointment(long appointmentId);
+    public void close();
+
 }

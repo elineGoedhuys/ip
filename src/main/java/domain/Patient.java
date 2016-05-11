@@ -1,25 +1,45 @@
-package domain;
-
-import database.patient.DatabasePatientFacade;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package domain;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 /**
  *
  * @author Eline
  */
-public class Patient extends Person{
+@Entity
+public class Patient extends Person implements Serializable {
     
-    private int patientId;
+ 
     
-    public Patient(String firstName, String lastName, String passportId, Address adress, int age,int patientId){
-        super(firstName,lastName,passportId,adress,age);
-        this.setPatientId(patientId);
+    public Patient(long id,String firstName, String lastName,String passportId,Address address,int age){
+        super(id,firstName,lastName,passportId,address,age);
+
     }
+    
+     public Patient(String firstName, String lastName, String passportId,Address address,int age){
+        super(firstName,lastName,passportId,address,age);
+
+    }
+   
+    
+    
+    
+    /** public Patient(long id, String firstName, String lastName, String passportId, Address address, int age){
+        super(id,firstName,lastName,passportId,address,age);
+    }**/
+    
+    /****/
     
     /**
      *
@@ -28,30 +48,31 @@ public class Patient extends Person{
         
     }
 
-    public void setPatientId(int patientId) {
+
+
+   /** public void setPatientId(int patientId) {
         this.patientId = patientId;
     }
 
     public int getPatientId() {
         return this.patientId;
-    }
+    }**/
 
     
     
-    public String toString(){
+    /**public String toString(){
         return " Patient : " + super.toString() + " PatientID: " + this.getPatientId();
-    }
+    }**/
 
     public String DatabaseFormat() {
-        return this.getFirstname() + " ; " + this.getLastName() + " ; " + this.getPassportId() +
-                " ; " + this.getAdress().getStreet() + " ; " + this.getAdress().getHouseNumber() +
-                " ; " + this.getAdress().getTown() + " ; " + this.getAdress().getZipCode() + 
-                " ; " + this.getAdress().getRegion() + " ; " + this.getAdress().getCountry() + 
-                " ; " + this.getAge() + " ; " + this.getPatientId() + "\n";
+     /**   return this.getFirstName() + " ; " + this.getLastName() + " ; " + this.getPassportId() +
+                " ; " + this.getAddress().getStreet() + " ; " + this.getAddress().getHouseNumber() +
+                " ; " + this.getAddress().getTown() + " ; " + this.getAddress().getZipCode() + 
+                " ; " + this.getAddress().getRegion() + " ; " + this.getAddress().getCountry() + 
+                " ; " + this.getAge() + " ; " + this.getId() + "\n";**/
+     return null;
+   
     }
-    
-    
-    
-    
+
     
 }

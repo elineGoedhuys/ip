@@ -48,31 +48,32 @@ public class DatabaseDoctorDB implements DatabaseDoctor {
     public void create(Doctor doctor) {
          if(doctor == null){
             throw new DbException("Nothing to add.");
-        }try{
-            String sql = "INSERT INTO r0365524.doctor (firstname, lastname, passportid ,street, housenumber, town, zipcode, region, country, age, doctorid)"
+        }
+         
+         /**try{
+            String sql = "INSERT INTO r0365524.doctor (firstname, lastname, passportid ,street, housenumber, town, zipcode, region, country, age)"
                         + "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
             statement = connection.prepareStatement(sql);
-            statement.setString(1, doctor.getFirstname());
+            statement.setString(1, doctor.getFirstName());
             statement.setString(2, doctor.getLastName());
             statement.setString(3, doctor.getPassportId());
-            statement.setString(4, doctor.getAdress().getStreet());
-            statement.setString(5, doctor.getAdress().getHouseNumber());
-            statement.setString(6, doctor.getAdress().getTown());
-            statement.setString(7, doctor.getAdress().getZipCode());
-            statement.setString(8, doctor.getAdress().getRegion());
-            statement.setString(9, doctor.getAdress().getCountry());
-            statement.setString(10, doctor.getAdress().getAge());
-            statement.setInt(11, doctor.getDoctorId());
+            statement.setString(4, doctor.getAddress().getStreet());
+            statement.setString(5, doctor.getAddress().getHouseNumber());
+            statement.setString(6, doctor.getAddress().getTown());
+            statement.setString(7, doctor.getAddress().getZipCode());
+            statement.setString(8, doctor.getAddress().getRegion());
+            statement.setString(9, doctor.getAddress().getCountry());
+            statement.setString(10, doctor.getAddress().getAge());
         }catch(SQLException e){
             throw new DbException(e);
-        }
+        }**/
     }
 
     @Override
     public List<Doctor> read() {
         List<Doctor> list;
         list = new ArrayList<>();
-        try{
+        /**try{
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM r0365524.doctor");
             ResultSet result = statement.executeQuery();
             while (result.next()){
@@ -88,33 +89,70 @@ public class DatabaseDoctorDB implements DatabaseDoctor {
                 address.setTown(result.getString("town"));
                 address.setRegion(result.getString("region"));
                 address.setCountry(result.getString("country"));
-                doctor.setAdress(address);
+                doctor.setAddress(address);
                 doctor.setAge(result.getInt("age"));
-                doctor.setDoctorId(result.getInt("doctorid"));
+                doctor.setId(result.getInt("doctorid"));
                 list.add(doctor);
             }
         }catch(SQLException e){
             e.printStackTrace();
-        }
+        }**/
         return list;
     }
 
     @Override
     public void update(Doctor doctor) {
-        this.delete(doctor.getDoctorId());
+        this.delete(doctor.getId());
         this.create(doctor);
     }
 
     @Override
-    public void delete(int doctroId) {
+    public void delete(long doctroId) {
     try{
             String sql = "DELETE FROM 2TX33_r0365524.doctor where doctorid = ?";
             statement = connection.prepareStatement(sql);
-            statement.setInt(1, doctroId);
+            statement.setLong(1, doctroId);
             statement.executeUpdate();
         }catch(SQLException e){
             throw new DbException(e);
         }
+    }
+
+    @Override
+    public Doctor getDoctorOnId(long doctorId) {
+        Doctor doctor = new Doctor();
+        Address address = new Address();
+        /**try{
+            String sql = "SELECT * from r0365524.doctor where doctorid = ? ";
+            statement = connection.prepareStatement(sql);
+				statement.setLong(1, doctorId);
+				ResultSet result = statement.executeQuery();
+				while(result.next()){
+					doctor.setId(result.getInt("doctorid"));
+                                        doctor.setFirstName(result.getString("firstname"));
+                                        doctor.setLastName(result.getString("lastname"));
+                                        doctor.setAge(result.getInt("age"));
+                                        doctor.setPassportId(result.getString("passportid"));
+                                        address.setCountry("country");
+                                        address.setHouseNumber("housenumber");
+                                        address.setRegion("region");
+                                        address.setStreet("street");
+                                        address.setTown("town");
+                                        address.setZipCode("zipcode");
+                                        doctor.setAddress(address);
+				}
+
+            
+        }catch(SQLException e){
+            throw new DbException(e.getMessage(), e);
+
+        }**/
+        return doctor;
+    }
+
+    @Override
+    public void close() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 

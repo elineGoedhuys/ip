@@ -15,7 +15,7 @@ import java.util.List;
 public class DatabaseDoctorRepository {
     
       private DatabaseDoctorFactory ft = new DatabaseDoctorFactory();
-    private DatabaseDoctor db = ft.DatabaseDoctorFactory("hash");
+    private DatabaseDoctor db = ft.DatabaseDoctorFactory("JPA");
     
     public DatabaseDoctorRepository(){
         
@@ -43,5 +43,11 @@ public class DatabaseDoctorRepository {
         db.delete(doctorid);
     }
     
- 
+    public Doctor getDoctorOnId(int doctorId){
+        return db.getDoctorOnId(doctorId);
+    }
+    
+    public void close(){
+        db.close();
+    }
 }

@@ -26,6 +26,8 @@ public class DatabaseDoctorFactory {
             return new DatabaseDoctorDB();
         } else if (type.equalsIgnoreCase("hash")){
             return new DatabaseDoctorHashMap();
+        }else if (type.equalsIgnoreCase("JPA")){
+            return new DoctorRelationalDatabase("HospitalPU");
         }
         return null;
     }

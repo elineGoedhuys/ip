@@ -15,7 +15,7 @@ import java.util.List;
 public class DatabasePatientRepository {
     
     private DatabasePatientFactory ft = new DatabasePatientFactory();
-    private DatabasePatient db = ft.DatabasePatientFactory("hash");
+    private DatabasePatient db = ft.DatabasePatientFactory("JPA");
     
     public DatabasePatientRepository(){
         
@@ -39,13 +39,17 @@ public class DatabasePatientRepository {
         db.update(patient);
     }
     
-    public void delete(int patientId){
+    public void delete(long patientId){
         db.delete(patientId);
     }
     
-    public int getNextId(){
-        return db.getNextId();
+   
+    
+    public Patient getPatientOnId(long patientId){
+       return db.getPatientOnId(patientId);
     }
     
-    
+    public void close(){
+        db.close();
+    }
 }

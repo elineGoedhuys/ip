@@ -25,6 +25,8 @@ public class DatabasePatientFactory {
             return new DatabasePatientDB();
         } else if (type.equalsIgnoreCase("hash")){
             return new DatabasePatientHashMap();
+        } else if (type.equalsIgnoreCase("JPA")){
+            return new PatientRelationalDatabase("HospitalPU");
         }
         return null;
     }

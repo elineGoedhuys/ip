@@ -1,5 +1,16 @@
 package domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.io.Serializable;
+import java.util.Collection;
+import java.util.HashSet;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,23 +21,43 @@ package domain;
  *
  * @author Eline
  */
+@Entity
 public class Address {
     
-    private String street;
+   /** @JsonIgnoreProperties**/
+    @Id
+    @GeneratedValue
+    private long id;
     private String houseNumber;
     private String town;
     private String zipCode;
     private String region;
     private String country;
+     private String street;
+
     
-    public Address(String street, String houseNumber, String town, String zipCode, String region, String country){
+    public Address(long id,String street, String houseNumber, String town, String zipCode, String region, String country){
+       this.setId(id);
        this.setStreet(street);
        this.setHouseNumber(houseNumber);
        this.setTown(town);
        this.setZipCode(zipCode);
        this.setRegion(region);
        this.setCountry(country);
+
     }
+    
+    public Address(String street, String houseNumber, String town, String zipCode, String region, String country){
+       this.setId(id);
+       this.setStreet(street);
+       this.setHouseNumber(houseNumber);
+       this.setTown(town);
+       this.setZipCode(zipCode);
+       this.setRegion(region);
+       this.setCountry(country);
+  
+    }
+    
     
     public Address(){
         
@@ -55,6 +86,7 @@ public class Address {
     public String getCountry() {
         return country;
     }
+    
 
     public void setCountry(String country) {
         if(country.isEmpty() || country.equals("")){
@@ -97,7 +129,7 @@ public class Address {
         }
         this.zipCode = zipCode;
     }
-    
+     
     public String toString(){
         return "Street: " + this.getStreet() + " House number: " + this.getHouseNumber()
                 + " Town: " + this.getTown() + " Zip code: " + this.getZipCode() + " Region: " + this.getRegion()
@@ -107,6 +139,16 @@ public class Address {
     public String getAge() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+    
+    
     
 
    /** public String addressDatabaseFormat(){

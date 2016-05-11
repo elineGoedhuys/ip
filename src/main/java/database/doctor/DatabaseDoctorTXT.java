@@ -17,6 +17,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -50,14 +51,15 @@ public class DatabaseDoctorTXT implements DatabaseDoctor{
     @Override
     public List<Doctor> read() {
         List<Doctor> list = new ArrayList<>();
-            try{
-            Scanner sc;
+            /**try{
+            /**Scanner sc;
             sc = new Scanner(file);
             while(sc.hasNextLine()){
                 Scanner sc1 = new Scanner(sc.nextLine()).useDelimiter(";");
                 String firstname = sc1.next();
                 String lastname = sc1.next();
                 String passportid = sc1.next();
+                Long id = Long.parseLong(sc1.next());
                 String street = sc1.next();
                 String housenumber = sc1.next();
                 String town = sc1.next();
@@ -66,33 +68,43 @@ public class DatabaseDoctorTXT implements DatabaseDoctor{
                 String country = sc1.next();
                 Integer age = Integer.parseInt(sc1.next());
                 Integer doctorid = Integer.parseInt(sc1.next());
-                Address address = new Address(street,housenumber,town,zipcode,region,country);
-                Doctor doctor = new Doctor(firstname,lastname,passportid,address,age,doctorid);
+                Address address = new Address(id,street,housenumber,town,zipcode,region,country);
+                Doctor doctor = new Doctor(doctorid,firstname,lastname,passportid,address,age);
                 list.add(doctor);
                 sc1.close();
             }
             sc.close();
             return list;
-        } catch (FileNotFoundException ex) {
+        } /**catch (FileNotFoundException ex) {
             Logger.getLogger(DatabasePatientTXT.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }**/
       return list;    
 
     }
 
     @Override
     public void update(Doctor doctor) {
-        this.delete(doctor.getDoctorId());
+        this.delete(doctor.getId());
         this.create(doctor);
     }
 
     @Override
-    public void delete(int doctroId) {
+    public void delete(long doctroId) {
          for(int i = 0; i != read().size(); i++){
-            if(read().get(i).getDoctorId() == doctroId){
+            if(read().get(i).getId() == doctroId){
                 read().remove(i);
             }
         }
+    }
+
+    @Override
+    public Doctor getDoctorOnId(long doctorId) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void close() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     

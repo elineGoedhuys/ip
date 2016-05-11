@@ -32,4 +32,11 @@ public class DatabaseDoctorFacade {
         rp.delete(doctorid);
     }
     
+    public Doctor getDoctorOnId(int doctorId){
+        return rp.getDoctorOnId(doctorId);
+    }
+    
+    public void close(){
+        rp.close();
+    }
 }

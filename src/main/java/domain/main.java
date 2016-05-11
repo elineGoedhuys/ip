@@ -7,6 +7,7 @@ import database.appointment.DatabaseAppointmentFacade;
 import database.doctor.DatabaseDoctorFacade;
 import database.patient.DatabasePatientFacade;
 import database.patient.DatabasePatientTXT;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -96,9 +97,7 @@ public class main {
         dp.getPatientOnId(1);**/
         
      
-            Address a1 = new Address ("Wijnberg", "48", "3202","Rillaar","Vlaams-Brabant","Belgium");
-            Doctor d = new Doctor("Eline","Goedhuys","1223",a1,22,334456);
-            Patient p = new Patient("Eline","Goedhuys","1223",a1,22,3467);
+            
             String date = new String("12 maart 2017");        
             /**Appointment app = new Appointment(123,d.getDoctorId(),p.getPatientId(),date,"somewhere");
             DatabaseAppointmentFacade facade = new DatabaseAppointmentFacade();
@@ -106,10 +105,22 @@ public class main {
             System.out.println(facade.getAllAppointments().toString());
             System.out.println(app.getAppointmentId());**/
             DatabaseFacade facade = new DatabaseFacade();
-            facade.newDoctor(d);
+            /**facade.newDoctor(d);
             System.out.println(facade.getPatients());
             System.out.println(facade.getDoctors());
-           
+            ArrayList<Patient> patients = (ArrayList<Patient>) facade.getPatients();
+            for(int i= 0; i != patients.size(); i++){
+                System.out.println(patients.get(i).getFirstName());
+                System.out.println(patients.get(i).getAddress().getHouseNumber());
+            }
+            /**Date date1 = new Date(2015,02,15,8,10);
+            Appointment appointment = new Appointment(1,334456,3467,date1,"Hospital");
+            facade.makeAppointment(appointment);
+            System.out.println(facade.getAllAppointments());**/
+          /**  System.out.println(facade.getDoctors());
+            System.out.println(facade.getPatients());
+            System.out.println(facade.getDoctorOnId(1));
+            System.out.println(facade.getPatientOnId(1));**/
     }
     
     

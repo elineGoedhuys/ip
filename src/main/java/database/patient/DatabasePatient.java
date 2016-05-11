@@ -17,8 +17,7 @@ public interface DatabasePatient {
     public void create(Patient patient);
     public List<Patient> read();
     public void update(Patient patient);
-    public void delete(int patientid);
-    public Patient getPatientOnId(int patientId);
-    public int getLastId();
-    public int getNextId();
+    public void delete(long patientid);
+    public Patient getPatientOnId(long patientId);
+    public void close();
 }

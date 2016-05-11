@@ -26,7 +26,7 @@ public class ScheduleAppointment {
         }
         for(int i = 0; i != appointments.size(); i++){
             if(appointments.get(i).getDate().equals(appointment.getDate())
-                    && appointments.get(i).getDocterID() == (appointment.getDocterID())){
+                    && appointments.get(i).getDoctorId() == (appointment.getDoctorId())){
                 throw new IllegalArgumentException("You can't make an appointment at this time.");
             }
             

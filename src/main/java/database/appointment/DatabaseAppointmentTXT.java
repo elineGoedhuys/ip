@@ -8,12 +8,14 @@ package database.appointment;
 import database.patient.DatabasePatientTXT;
 import domain.Address;
 import domain.Appointment;
+import domain.Appointment1;
 import domain.Doctor;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -39,7 +41,7 @@ public class DatabaseAppointmentTXT implements DatabaseAppointment {
     }
     
     @Override
-    public void create(Appointment appointment) {
+    public void create(Appointment1 appointment) {
        FileWriter fw = null;
        PrintWriter pw = null;
        try{
@@ -54,10 +56,10 @@ public class DatabaseAppointmentTXT implements DatabaseAppointment {
     }
 
     @Override
-    public List<Appointment> read() 
+    public List<Appointment1> read() 
    {
-       List<Appointment> list = new ArrayList<>();
-            try{
+       List<Appointment1> list = new ArrayList<>();
+           /** try{
             Scanner sc;
             sc = new Scanner(file);
             while(sc.hasNextLine()){
@@ -66,8 +68,9 @@ public class DatabaseAppointmentTXT implements DatabaseAppointment {
                 Integer docterid = Integer.parseInt(sc1.next());
                 Integer patientid = Integer.parseInt(sc1.next());
                 String date = sc1.next();
+                String hour = sc1.next();
                 String place = sc1.next();
-                Appointment app = new Appointment(appointmentId,docterid,patientid,date,place);
+                Appointment1 app = new Appointment1(appointmentId,docterid,patientid,date,hour,place);
                 list.add(app);
                 sc1.close();
             }
@@ -75,24 +78,35 @@ public class DatabaseAppointmentTXT implements DatabaseAppointment {
             return list;
         } catch (FileNotFoundException ex) {
             Logger.getLogger(DatabasePatientTXT.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } **/
       return list;    
     }
 
     @Override
-    public void update(Appointment appointment) {
+    public void update(Appointment1 appointment) {
         this.delete(appointment.getAppointmentId());
         this.create(appointment);
     }
 
     @Override
-    public void delete(int appointmentId) {
+    public void delete(long appointmentId) {
         for(int i = 0; i != read().size(); i++){
             if(read().get(i).getAppointmentId() == appointmentId){
                 read().remove(i);
             }
         }
     }
+
+    @Override
+    public Appointment1 getAppointment(long appointmentId) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void close() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 
     
 }

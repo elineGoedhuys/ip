@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import java.util.Set;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -49,21 +50,20 @@ public class DatabasePatientDB implements DatabasePatient {
         if(patient == null){
             throw new DbException("Nothing to add.");
         }try{
-            String sql = "INSERT INTO r0365524.patient (patientid, firstname, lastname, passportid ,street, housenumber, town, zipcode, region, country, age)"
+            String sql = "INSERT INTO r0365524.patient (firstname, lastname, passportid ,street, housenumber, town, zipcode, region, country, age)"
                         + "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
             statement = connection.prepareStatement(sql);
-            statement.setInt(1,patient.getPatientId());
-            statement.setString(2, patient.getFirstname());
-            statement.setString(3, patient.getLastName());
-            statement.setString(4, patient.getPassportId());
-            statement.setString(5, patient.getAdress().getStreet());
-            statement.setString(6, patient.getAdress().getHouseNumber());
-            statement.setString(7, patient.getAdress().getTown());
-            statement.setString(8, patient.getAdress().getZipCode());
-            statement.setString(9, patient.getAdress().getRegion());
-            statement.setString(10, patient.getAdress().getCountry());
-            statement.setInt(11, patient.getAge());
-           
+           /** statement.setString(1, patient.getFirstName());
+            statement.setString(2, patient.getLastName());
+            statement.setString(3, patient.getPassportId());
+            statement.setString(4, patient.getAddress().getStreet());
+            statement.setString(5, patient.getAddress().getHouseNumber());
+            statement.setString(6, patient.getAddress().getTown());
+            statement.setString(7, patient.getAddress().getZipCode());
+            statement.setString(8, patient.getAddress().getRegion());
+            statement.setString(9, patient.getAddress().getCountry());
+            statement.setInt(10, patient.getAge());
+           **/
         }catch(SQLException e){
             throw new DbException(e);
         }
@@ -73,12 +73,12 @@ public class DatabasePatientDB implements DatabasePatient {
     public List<Patient> read() {
         List<Patient> list;
         list = new ArrayList<>();
-        try{
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM r0365524.patient");
+       /** try{
+           /** PreparedStatement statement = connection.prepareStatement("SELECT * FROM r0365524.patient");
             ResultSet result = statement.executeQuery();
             while (result.next()){
                 Patient patient = new Patient();
-                Address address = new Address();
+                Set<Address> address = (Set<Address>) new Address();
                 patient.setFirstName(result.getString("firstname"));
                 patient.setLastName(result.getString("lastname"));
                 patient.setPassportId(result.getString("passportid"));
@@ -89,22 +89,22 @@ public class DatabasePatientDB implements DatabasePatient {
                 address.setTown(result.getString("town"));
                 address.setRegion(result.getString("region"));
                 address.setCountry(result.getString("country"));
-                patient.setAdress(address);
-                patient.setPatientId(result.getInt("patientid"));
+                patient.setAddress(address);
+                patient.setId(result.getInt("patientid"));
                 list.add(patient);
             }
         }catch(SQLException e){
             e.printStackTrace();
-        }
+        }**/
         return list;
     }
 
     @Override
-    public void delete(int patientid) {
+    public void delete(long patientid) {
         try{
             String sql = "DELETE FROM 2TX33_r0365524.patient where patientid = ?";
             statement = connection.prepareStatement(sql);
-            statement.setInt(1, patientid);
+            statement.setLong(1, patientid);
             statement.executeUpdate();
         }catch(SQLException e){
             throw new DbException(e);
@@ -113,56 +113,53 @@ public class DatabasePatientDB implements DatabasePatient {
 
     @Override
     public void update(Patient patient) {
-        this.delete(patient.getPatientId());
+        this.delete(patient.getId());
         this.create(patient);
     }
     
-    @Override
-    public int getLastId(){
-        int lastId = 0;
-	try{
-		PreparedStatement statement = connection.prepareStatement("SELECT patientid FROM patient ORDER BY patientid DESC fetch first row only");
-		ResultSet result = statement.executeQuery();
-		while(result.next()){			
-                lastId = Integer.parseInt(result.getString("patientid"));
-		}
-		}catch(SQLException e){
-		throw new DbException(e);
-		}
-		return lastId;
-	}
+   
 	
-        @Override
-	public int getNextId(){
-		return getLastId()+1;
-	}
+   
 
     private void DbException(SQLException e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Patient getPatientOnId(int patientId) {
+    public Patient getPatientOnId(long patientId) {
         Patient patient = new Patient();
-        try{
+        Address address = new Address();
+        /**try{
             String sql = "SELECT * from r0365524.patient where patientid = ? ";
             statement = connection.prepareStatement(sql);
-				statement.setInt(1, patientId);
+				statement.setLong(1, patientId);
 				ResultSet result = statement.executeQuery();
 				while(result.next()){
-					patient.setPatientId(result.getInt(patientId));
+					patient.setId(result.getInt("patientid"));
                                         patient.setFirstName(result.getString("firstname"));
                                         patient.setLastName(result.getString("lastname"));
                                         patient.setAge(result.getInt("age"));
                                         patient.setPassportId(result.getString("passportid"));
+                                        address.setCountry("country");
+                                        address.setHouseNumber("housenumber");
+                                        address.setRegion("region");
+                                        address.setStreet("street");
+                                        address.setTown("town");
+                                        address.setZipCode("zipcode");
+                                        patient.setAddress(address);
 				}
 
             
         }catch(SQLException e){
             throw new DbException(e.getMessage(), e);
 
-        }
+        }**/
         return patient;
+    }
+
+    @Override
+    public void close() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
         
         
