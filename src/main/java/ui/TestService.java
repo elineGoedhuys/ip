@@ -43,7 +43,7 @@ public class TestService {
         System.out.println(d.toString());
         //service.makeAppointment(app);
         //System.out.println(service.getAllAppointments());
-        System.out.println(app.toString());
+       // System.out.println(app.toString());
     }
     
     

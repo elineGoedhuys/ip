@@ -32,7 +32,7 @@ public class DatabaseDoctorFacade {
         rp.delete(doctorid);
     }
     
-    public Doctor getDoctorOnId(int doctorId){
+    public Doctor getDoctorOnId(long doctorId){
         return rp.getDoctorOnId(doctorId);
     }
     

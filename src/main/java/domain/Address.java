@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -28,11 +30,23 @@ public class Address {
     @Id
     @GeneratedValue
     private long id;
+    @NotNull
+    @NotEmpty(message = "Housenumber can't be empty.")
     private String houseNumber;
+    @NotNull
+    @NotEmpty(message = "Town can't be empty.")
     private String town;
+    @NotNull
+    @NotEmpty(message = "Zipcode can't be empty.")
     private String zipCode;
+    @NotNull
+    @NotEmpty(message = "Region can't be empty.")
     private String region;
+    @NotNull
+    @NotEmpty(message = "Country can't be empty.")
     private String country;
+    @NotNull
+    @NotEmpty(message = "Street can't be empty.")
      private String street;
 
     

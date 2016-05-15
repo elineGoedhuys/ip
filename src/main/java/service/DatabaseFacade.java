@@ -106,11 +106,11 @@ public class DatabaseFacade {
         appointmentfacade.updateAppointment(appointment);
     }
     
-    public Patient getPatientOnId(int patientId){
+    public Patient getPatientOnId(long patientId){
         return patientfacade.getPatientOnId(patientId);
     }
     
-    public Doctor getDoctorOnId(int doctorId){
+    public Doctor getDoctorOnId(long doctorId){
         return doctorfacade.getDoctorOnId(doctorId);
     }
     

@@ -43,7 +43,7 @@ public class DatabaseDoctorRepository {
         db.delete(doctorid);
     }
     
-    public Doctor getDoctorOnId(int doctorId){
+    public Doctor getDoctorOnId(long doctorId){
         return db.getDoctorOnId(doctorId);
     }
     

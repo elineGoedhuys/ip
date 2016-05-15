@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
@@ -22,8 +24,14 @@ public class Appointment1 {
     private long id;
     private Person patient;
     private Person doctor;
+    @NotNull
+    @NotEmpty(message = "Place can't be empty.")
     private String place;
+    @NotNull
+    @NotEmpty(message = "Hour can't be empty.")
     private String uur;
+    @NotNull
+    @NotEmpty(message = "Date can't be empty.")
     private String date;
 
     public Appointment1() {

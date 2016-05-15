@@ -20,6 +20,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
@@ -32,9 +34,17 @@ public abstract class Person {
     @Id
     @GeneratedValue
     private long id;
+    @NotNull
+    @NotEmpty(message = "Firstname can't be empty.")
     private String firstName;
+    @NotNull
+    @NotEmpty(message = "Lastname can't be empty.")
     private String lastName;
+    @NotNull
+    @NotEmpty(message = "PassportId can't be empty.")
     private String passportId;
+    @NotNull
+    @NotEmpty(message = "Age can't be empty.")
     private int age;
     @OneToOne(cascade={CascadeType.PERSIST},fetch=FetchType.LAZY)
     @JoinColumn(name="ADRESS_ID")
