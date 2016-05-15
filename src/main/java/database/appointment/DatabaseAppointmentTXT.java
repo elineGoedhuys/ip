@@ -44,7 +44,7 @@ public class DatabaseAppointmentTXT implements DatabaseAppointment {
     public void create(Appointment1 appointment) {
        FileWriter fw = null;
        PrintWriter pw = null;
-       try{
+       /**try{
           fw = new FileWriter(file,true);
           pw = new PrintWriter(fw);
           pw.write(appointment.DatabaseFormat());
@@ -52,7 +52,7 @@ public class DatabaseAppointmentTXT implements DatabaseAppointment {
           fw.close();
        }catch(IOException ex){
            ex.getMessage();
-       } 
+       } **/
     }
 
     @Override
@@ -84,14 +84,14 @@ public class DatabaseAppointmentTXT implements DatabaseAppointment {
 
     @Override
     public void update(Appointment1 appointment) {
-        this.delete(appointment.getAppointmentId());
+        this.delete(appointment.getId());
         this.create(appointment);
     }
 
     @Override
     public void delete(long appointmentId) {
         for(int i = 0; i != read().size(); i++){
-            if(read().get(i).getAppointmentId() == appointmentId){
+            if(read().get(i).getId() == appointmentId){
                 read().remove(i);
             }
         }

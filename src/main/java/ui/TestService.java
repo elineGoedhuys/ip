@@ -21,20 +21,30 @@ public class TestService {
     
     public static void main(String[] args){
        Address address = new Address("Wijnberg","48","Rillaar","3202","Vlaams-Brabant","Belgium");
-      Patient patient = new Patient("Griet","Goedhuys","BE2356542",address,33);
+      Person patient = new Patient("Griet","Goedhuys","BE2356542",address,33);
         
        /**service.newPatient(patient);
         System.out.println(service.getPatients());**/
       DatabaseFacade service = new DatabaseFacade();
-       //Doctor doctor = new Doctor("Jan","Janssens","BE2456543",address,33);
+       Person doctor = new Doctor("Jan","Janssens","BE2456543",address,33);
         //service.newDoctor(doctor);
         //System.out.println(service.getDoctors());
        /**service.deletePatient(651);**/
-       Appointment1 app = new Appointment1(851,701,"12 Juni 2016","hospital","08:00");
+        Person p = service.getPatientOnId(901);
+      Person d = service.getDoctorOnId(851);
+      Appointment1 app = new Appointment1(p,d,"hospital","08:00","12 Juni 2016");
+      //service.makeAppointment(app);
+
       // service.newPatient(patient);
         System.out.println(service.getPatients());
         //System.out.println(service.findAppointment(901));
-        System.out.println(service.getAllAppointments());
+        //System.out.println(service.getAllAppointments());
+        System.out.println(p.toString());
+        System.out.println(d.toString());
+        //service.makeAppointment(app);
+        //System.out.println(service.getAllAppointments());
+        System.out.println(app.toString());
     }
+    
     
 }

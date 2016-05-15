@@ -25,7 +25,7 @@ public class DatabaseAppointmentHashMap implements DatabaseAppointment {
 
     @Override
     public void create(Appointment1 appointment) {
-       appointments.put(appointment.getAppointmentId(), appointment);
+       appointments.put(appointment.getId(), appointment);
     }
 
     @Override
@@ -36,8 +36,8 @@ public class DatabaseAppointmentHashMap implements DatabaseAppointment {
 
     @Override
     public void update(Appointment1 appointment) {
-        appointments.remove(appointment.getAppointmentId(), appointment);
-        appointments.put(appointment.getAppointmentId(), appointment);
+        appointments.remove(appointment.getId(), appointment);
+        appointments.put(appointment.getId(), appointment);
     }
 
     @Override
@@ -49,7 +49,7 @@ public class DatabaseAppointmentHashMap implements DatabaseAppointment {
     public Appointment1 getAppointment(long appointmentId) {
         List<Appointment1> appointments = this.read();
         for(int i = 0; i != appointments.size(); i++){
-            if(appointments.get(i).getAppointmentId() == appointmentId){
+            if(appointments.get(i).getId() == appointmentId){
                 return appointments.get(i);
             }
         }

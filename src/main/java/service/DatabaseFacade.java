@@ -82,11 +82,11 @@ public class DatabaseFacade {
         patientfacade.update(patient);
     }
     
-    public void deleteDocotor(int d){
+    public void deleteDocotor(long d){
         doctorfacade.delete(d);
     }
     
-    public void deletePatient(int p){
+    public void deletePatient(long p){
         patientfacade.delete(p);
     }
     

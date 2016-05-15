@@ -85,7 +85,7 @@ public class AppointmentRelationalDatabase implements DatabaseAppointment {
     public void update(Appointment1 appointment) {
         try {
             openConnection();
-            this.delete(appointment.getAppointmentId());
+            this.delete(appointment.getId());
             this.create(appointment);
         } catch (Exception e) {
             manager.getTransaction().rollback();

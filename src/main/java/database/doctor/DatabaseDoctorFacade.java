@@ -28,7 +28,7 @@ public class DatabaseDoctorFacade {
         rp.update(doctor);
     }
     
-    public void delete(int doctorid){
+    public void delete(long doctorid){
         rp.delete(doctorid);
     }
     

@@ -23,12 +23,12 @@ public class DatabaseAppointmentFacade {
         if(app == null){
             throw new IllegalArgumentException("Appointment can't be made.");
         }
-        List<Appointment1> appointments = this.getAllAppointments();
+        /**List<Appointment1> appointments = this.getAllAppointments();
         for(int i = 0; i != appointments.size(); i++){
             if (appointments.get(i).equals(app)){
                 throw new IllegalArgumentException("Appointment can't be made.");
             }
-        }
+        }**/
        
         dbappointment.create(app);
     }
@@ -68,7 +68,7 @@ public class DatabaseAppointmentFacade {
       List<Appointment1> apps = new ArrayList<Appointment1>();
         List<Appointment1> appointments = getAllAppointments();
         for(int i = 0; i != appointments.size(); i++){
-            if(appointments.get(i).getPatientId() == Integer.parseInt(patientId)){
+            if(appointments.get(i).getPatient().getId() == Integer.parseInt(patientId)){
                 apps.add(appointments.get(i));
             }
         }

@@ -39,7 +39,7 @@ public class DatabaseDoctorRepository {
         db.update(doctor);
     }
     
-    public void delete(int doctorid){
+    public void delete(long doctorid){
         db.delete(doctorid);
     }
     

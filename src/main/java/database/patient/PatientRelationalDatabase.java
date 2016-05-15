@@ -92,7 +92,6 @@ public class PatientRelationalDatabase implements DatabasePatient{
         try {
             openConnection();
             manager.getTransaction().begin();
-            
             manager.merge(patient);
             manager.flush();
             manager.getTransaction().commit();

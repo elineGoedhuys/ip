@@ -22,6 +22,7 @@ public class Patient extends Person implements Serializable {
     
  
     
+    
     public Patient(long id,String firstName, String lastName,String passportId,Address address,int age){
         super(id,firstName,lastName,passportId,address,age);
 
@@ -50,13 +51,7 @@ public class Patient extends Person implements Serializable {
 
 
 
-   /** public void setPatientId(int patientId) {
-        this.patientId = patientId;
-    }
-
-    public int getPatientId() {
-        return this.patientId;
-    }**/
+   
 
     
     

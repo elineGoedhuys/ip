@@ -48,28 +48,28 @@ public class DatabaseAppointmentDB implements DatabaseAppointment{
     }
     @Override
     public void create(Appointment1 appointment) {
-        if(appointment == null){
+      /**  if(appointment == null){
             throw new DbException("Nothing to add.");
         }try{
-            String sql = "INSERT INTO r0365524.appointments (appointmentid, doctorid, patientid, date, hour, place)"
+            String sql = "INSERT INTO r0365524.appointments (appointmentid, doctor, patient, date, hour, place)"
                         + "VALUES (?,?,?,?,?)";
             statement = connection.prepareStatement(sql);
             statement.setLong(1, appointment.getAppointmentId());
-            statement.setInt(2, appointment.getDoctorId());
-            statement.setInt(3, appointment.getPatientId());
+            statement.setInt(2, appointment.getDoctor());
+            statement.setInt(3, appointment.getPatient());
             statement.setString(4, appointment.getDate());
             statement.setString(5,appointment.getUur());
             statement.setString(6, appointment.getPlace());
         }catch(SQLException e){
             throw new DbException(e);
-        }
+        }**/
     }
 
     @Override
     public List<Appointment1> read() {
         List<Appointment1> list;
         list = new ArrayList<>();
-        try{
+        /**try{
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM r0365524.appointments");
             ResultSet result = statement.executeQuery();
             while (result.next()){
@@ -84,13 +84,13 @@ public class DatabaseAppointmentDB implements DatabaseAppointment{
             }
         }catch(SQLException e){
             e.printStackTrace();
-        }
+        }**/
         return list;
     }
 
     @Override
     public void update(Appointment1 appointment) {
-        this.delete(appointment.getAppointmentId());
+        this.delete(appointment.getId());
         this.create(appointment);
     }
 
