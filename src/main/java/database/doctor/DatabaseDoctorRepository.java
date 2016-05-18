@@ -45,6 +45,11 @@ public class DatabaseDoctorRepository {
     
     public Doctor getDoctorOnId(long doctorId){
         return db.getDoctorOnId(doctorId);
+    
+    }
+    
+    public Doctor getDoctorOnName(String name){
+        return db.getDoctorOnName(name);
     }
     
     public void close(){

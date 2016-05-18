@@ -19,5 +19,6 @@ public interface DatabasePatient {
     public void update(Patient patient);
     public void delete(long patientid);
     public Patient getPatientOnId(long patientId);
+    public Patient getPatientOnName(String name);
     public void close();
 }

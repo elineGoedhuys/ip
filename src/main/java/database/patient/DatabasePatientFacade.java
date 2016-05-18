@@ -36,6 +36,10 @@ public class DatabasePatientFacade {
         return rp.getPatientOnId(patientId);
     }
     
+    public Patient getPatientOnName(String name){
+        return rp.getPatientOnName(name);
+    }
+    
     public void close(){
         rp.close();
     }

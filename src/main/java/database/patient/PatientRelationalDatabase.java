@@ -133,6 +133,20 @@ public class PatientRelationalDatabase implements DatabasePatient{
         }
     }
 
+    @Override
+    public Patient getPatientOnName(String name) {
+        try {
+            openConnection();
+            Patient p = manager.find(Patient.class, name);
+            
+            return p;
+        } catch (Exception e) {
+            throw new DbException();
+        } finally{
+            closeConnection();
+        }
+    }
+
    
     
 }

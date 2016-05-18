@@ -43,7 +43,8 @@ public class TestService {
        // System.out.println(app.toString());
         //System.out.println(p.getFirstName());
         //System.out.println(service.getAppointmentOnId(2651).getPatient().getFirstName());
-        System.out.println(service.findAppointment("1103"));
+        //System.out.println(service.findAppointment("1103"));
+        System.out.println(service.getDoctorOnName("Goedhuys"));
     }
     
     

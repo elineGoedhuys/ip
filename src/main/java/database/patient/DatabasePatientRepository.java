@@ -49,6 +49,10 @@ public class DatabasePatientRepository {
        return db.getPatientOnId(patientId);
     }
     
+    public Patient getPatientOnName(String name){
+        return db.getPatientOnName(name);
+    }
+    
     public void close(){
         db.close();
     }

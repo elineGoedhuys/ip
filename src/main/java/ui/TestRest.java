@@ -15,6 +15,7 @@ import org.springframework.web.client.RestTemplate;
 import rest.Result;
 import rest.Weather;
 import rest.Current;
+import service.DatabaseFacade;
 
 /**
  *
@@ -27,16 +28,17 @@ public class TestRest {
         //Weather response = restTemplate.getForObject("http://api.apixu.com/v1/current.json?key=aebe5a3f024040ff9bf112640160705&q=Brussel", Weather.class);
         //System.out.println(response.toString());
         
-        RestTemplate restTemplate = new RestTemplate();
-        ObjectMapper jacksonObjectMapper = new ObjectMapper();
+        //RestTemplate restTemplate = new RestTemplate();
+        //ObjectMapper jacksonObjectMapper = new ObjectMapper();
         
-        LinkedHashMap map= restTemplate.getForObject("http://api.apixu.com/v1/current.json?key=aebe5a3f024040ff9bf112640160705&q=Brussel", LinkedHashMap.class);
-        Weather weatherDescription = jacksonObjectMapper.convertValue(map.get("current"), Weather.class);
+        //LinkedHashMap map= restTemplate.getForObject("http://api.apixu.com/v1/current.json?key=aebe5a3f024040ff9bf112640160705&q=Brussel", LinkedHashMap.class);
+        //Weather weatherDescription = jacksonObjectMapper.convertValue(map.get("current"), Weather.class);
         //Current weatherCondition = jacksonObjectMapper.convertValue(map.get("condition"), Current.class);
 
       //  Current current = restTemplate.getForObject("http://api.apixu.com/v1/current.json?key=aebe5a3f024040ff9bf112640160705&q=Brussel", Current.class);
-        
-        System.out.println(weatherDescription.toString());
+       DatabaseFacade service = new DatabaseFacade();
+      
+        System.out.println(service.getWeather());
        // System.out.println(current.getConditions().get(0).getCurrent());
     }
     

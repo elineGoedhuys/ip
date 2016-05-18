@@ -19,4 +19,5 @@ public interface DatabaseDoctor {
     public void delete(long doctroId);
     public Doctor getDoctorOnId(long doctorId);
     public void close();
+    public Doctor getDoctorOnName(String name);
 }

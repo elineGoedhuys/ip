@@ -125,4 +125,17 @@ public class DoctorRelationalDatabase implements DatabaseDoctor {
         }
     }
 
+    @Override
+    public Doctor getDoctorOnName(String name) {
+        try{
+            openConnection();
+            Doctor d = manager.find(Doctor.class, name);
+            return d;
+        }catch (Exception e) {
+            throw new DbException();
+        } finally {
+            closeConnection();
+        }
+    }
+
 }

@@ -20,6 +20,7 @@ import domain.Patient;
 import static java.nio.file.Files.list;
 import static java.util.Collections.list;
 import java.util.List;
+import rest.RestWeather;
 
 /**
  *
@@ -31,6 +32,7 @@ public class DatabaseFacade {
     private DatabasePatientFacade patientfacade;
     private DatabaseAppointmentFacade appointmentfacade;
     private DatabaseAddressRepository addressfacade;
+    private RestWeather restWeather;
     private DatabaseAppointmentFactory appointmentfactory;
     private DatabaseDoctorFactory doctorfactory;
     private DatabasePatientFactory patientfactory;
@@ -113,6 +115,14 @@ public class DatabaseFacade {
         return doctorfacade.getDoctorOnId(doctorId);
     }
     
+    public Patient getPatientOnName(String name){
+        return patientfacade.getPatientOnName(name);
+    }
+    
+    public Doctor getDoctorOnName(String name){
+        return doctorfacade.getDoctorOnName(name);
+    }
+    
     public Appointment1 getAppointmentOnId(int appointmentId){
         return appointmentfacade.getAppointmentOnId(appointmentId);
     }
@@ -150,5 +160,9 @@ public class DatabaseFacade {
 
     public Object findAppointment(String patientId) {
         return appointmentfacade.findAppointment(patientId);
+    }
+    
+    public String getWeather(){
+        return restWeather.getWeather();
     }
 }
