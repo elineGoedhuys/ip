@@ -14,7 +14,6 @@ import database.doctor.DatabaseDoctorFactory;
 import database.patient.DatabasePatientFacade;
 import database.patient.DatabasePatientFactory;
 import domain.Address;
-import domain.Appointment;
 import domain.Appointment1;
 import domain.Doctor;
 import domain.Patient;

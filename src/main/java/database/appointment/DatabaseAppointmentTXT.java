@@ -7,7 +7,7 @@ package database.appointment;
 
 import database.patient.DatabasePatientTXT;
 import domain.Address;
-import domain.Appointment;
+
 import domain.Appointment1;
 import domain.Doctor;
 import java.io.File;

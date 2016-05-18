@@ -5,11 +5,16 @@
  */
 package ui;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import rest.Elevation;
 import org.springframework.web.client.RestTemplate;
 import rest.Result;
+import rest.Weather;
+import rest.Current;
 
 /**
  *
@@ -17,11 +22,24 @@ import rest.Result;
 */
 
 public class TestRest {
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException{
+       // RestTemplate restTemplate = new RestTemplate();
+        //Weather response = restTemplate.getForObject("http://api.apixu.com/v1/current.json?key=aebe5a3f024040ff9bf112640160705&q=Brussel", Weather.class);
+        //System.out.println(response.toString());
+        
         RestTemplate restTemplate = new RestTemplate();
-        Elevation response = restTemplate.getForObject("https://maps.googleapis.com/maps/api/elevation/json?locations=40.714728,-73.998672", Elevation.class);
-        System.out.println("Elevation: " + response.getResult().get(0).getElevation());
+        ObjectMapper jacksonObjectMapper = new ObjectMapper();
+        
+        LinkedHashMap map= restTemplate.getForObject("http://api.apixu.com/v1/current.json?key=aebe5a3f024040ff9bf112640160705&q=Brussel", LinkedHashMap.class);
+        Weather weatherDescription = jacksonObjectMapper.convertValue(map.get("current"), Weather.class);
+        //Current weatherCondition = jacksonObjectMapper.convertValue(map.get("condition"), Current.class);
+
+      //  Current current = restTemplate.getForObject("http://api.apixu.com/v1/current.json?key=aebe5a3f024040ff9bf112640160705&q=Brussel", Current.class);
+        
+        System.out.println(weatherDescription.toString());
+       // System.out.println(current.getConditions().get(0).getCurrent());
     }
+    
 }
 
 /**http://api.apixu.com/v1/current.json?key=aebe5a3f024040ff9bf112640160705&q=Paris**/

@@ -20,6 +20,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -44,11 +45,13 @@ public abstract class Person {
     @NotEmpty(message = "PassportId can't be empty.")
     private String passportId;
     @NotNull
-    @NotEmpty(message = "Age can't be empty.")
+    @Min(0)
     private int age;
     @OneToOne(cascade={CascadeType.PERSIST},fetch=FetchType.LAZY)
     @JoinColumn(name="ADRESS_ID")
     /**@JsonManagedReference**/
+    @NotNull
+    @NotEmpty
     private Address address;
   
 

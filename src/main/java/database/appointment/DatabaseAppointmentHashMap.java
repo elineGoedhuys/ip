@@ -5,7 +5,7 @@
  */
 package database.appointment;
 
-import domain.Appointment;
+
 import domain.Appointment1;
 import java.util.ArrayList;
 import java.util.HashMap;

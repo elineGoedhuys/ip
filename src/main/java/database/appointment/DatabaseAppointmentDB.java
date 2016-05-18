@@ -7,7 +7,7 @@ package database.appointment;
 
 
 import domain.Address;
-import domain.Appointment;
+
 import domain.Appointment1;
 import domain.Doctor;
 import domain.Patient;

@@ -5,11 +5,10 @@
  */
 package domain;
 
-import javax.persistence.CascadeType;
-import javax.persistence.FetchType;
+import java.io.Serializable;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -17,13 +16,14 @@ import org.hibernate.validator.constraints.NotEmpty;
  *
  * @author Eline
  */
-public class Appointment1 {
+@Entity
+public class Appointment1 implements Serializable {
     
     @Id
     @GeneratedValue
     private long id;
-    private Person patient;
-    private Person doctor;
+    private Patient patient;
+    private Doctor doctor;
     @NotNull
     @NotEmpty(message = "Place can't be empty.")
     private String place;
@@ -37,7 +37,7 @@ public class Appointment1 {
     public Appointment1() {
     }
 
-    public Appointment1(Person patient, Person doctor, String place, String uur, String date) {
+    public Appointment1(Patient patient, Doctor doctor, String place, String uur, String date) {
         this.patient = patient;
         this.doctor = doctor;
         this.place = place;
@@ -50,7 +50,7 @@ public class Appointment1 {
         return date;
     }
 
-    public Person getDoctor() {
+    public Doctor getDoctor() {
         return this.doctor;
     }
 
@@ -62,7 +62,7 @@ public class Appointment1 {
         return id;
     }
 
-    public Person getPatient() {
+    public Patient getPatient() {
         return this.patient;
     }
 
@@ -74,7 +74,7 @@ public class Appointment1 {
         this.date = date;
     }
 
-    public void setDoctor(Person doctor) {
+    public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
     }
 
@@ -82,7 +82,7 @@ public class Appointment1 {
         this.id = id;
     }
 
-    public void setPatient(Person patient) {
+    public void setPatient(Patient patient) {
         this.patient = patient;
     }
 
@@ -104,9 +104,4 @@ public class Appointment1 {
         return this.getDoctor().toString() + this.getPatient().toString() + this.getDate();
                 
     }
-    
-    
-    
-           
-    
 }
