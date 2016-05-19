@@ -20,6 +20,7 @@ public class RestWeather {
     
     LinkedHashMap map;
     Weather weatherDescription;
+    //Location location;
     public RestWeather(){
         
     }
@@ -29,6 +30,7 @@ public class RestWeather {
         jacksonObjectMapper = new ObjectMapper();
         map = restTemplate.getForObject("http://api.apixu.com/v1/current.json?key=aebe5a3f024040ff9bf112640160705&q=Brussel", LinkedHashMap.class);
         weatherDescription = jacksonObjectMapper.convertValue(map.get("current"), Weather.class);
-        return weatherDescription.getTemp_c();
+        //location = jacksonObjectMapper.convertValue(map.get(""), Location.class);
+        return weatherDescription.getTemp_c() + " °C";
     }
 }
