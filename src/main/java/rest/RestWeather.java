@@ -15,17 +15,19 @@ import org.springframework.web.client.RestTemplate;
  */
 public class RestWeather {
     
+    RestTemplate restTemplate;
+    ObjectMapper jacksonObjectMapper;
+    
+    LinkedHashMap map;
+    Weather weatherDescription;
     public RestWeather(){
-        
+        restTemplate = new RestTemplate();
+        jacksonObjectMapper = new ObjectMapper();
+        map = restTemplate.getForObject("http://api.apixu.com/v1/current.json?key=aebe5a3f024040ff9bf112640160705&q=Brussel", LinkedHashMap.class);
+        weatherDescription = jacksonObjectMapper.convertValue(map.get("current"), Weather.class);
     }
     
     public String getWeather(){
-        RestTemplate restTemplate = new RestTemplate();
-        ObjectMapper jacksonObjectMapper = new ObjectMapper();
-        
-        LinkedHashMap map= restTemplate.getForObject("http://api.apixu.com/v1/current.json?key=aebe5a3f024040ff9bf112640160705&q=Brussel", LinkedHashMap.class);
-        Weather weatherDescription = jacksonObjectMapper.convertValue(map.get("current"), Weather.class);
-    
-        return weatherDescription.toString();
+        return weatherDescription.getTemp_c();
     }
 }

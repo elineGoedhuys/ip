@@ -50,6 +50,7 @@ public class DatabaseFacade {
         patientfacade = new DatabasePatientFacade();
         appointmentfacade = new DatabaseAppointmentFacade();
         addressfacade = new DatabaseAddressRepository();
+        restWeather = new RestWeather();
     }
    
     public DatabaseFacade(String type){
