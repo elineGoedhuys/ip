@@ -32,8 +32,8 @@ public class TestService {
        /**service.deletePatient(651);**/
       Patient p = service.getPatientOnId(901);
       Doctor d = service.getDoctorOnId(851);
-     // Appointment1 app = new Appointment1(p,d,"hospital","08:00","12 Juni 2016");
-      //service.makeAppointment(app);
+     Appointment1 app = new Appointment1(p,d,"hospital","08:00","12 Juni 2016");
+      service.makeAppointment(app);
 
       // service.newPatient(patient);
        ////System.out.println(p.toString());
@@ -44,7 +44,7 @@ public class TestService {
         //System.out.println(p.getFirstName());
         //System.out.println(service.getAppointmentOnId(2651).getPatient().getFirstName());
         //System.out.println(service.findAppointment("1103"));
-        System.out.println(service.getDoctorOnName("Goedhuys"));
+        //System.out.println(service.getDoctorOnName("Goedhuys"));
     }
     
     

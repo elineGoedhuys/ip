@@ -6,9 +6,12 @@
 package domain;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -22,7 +25,9 @@ public class Appointment1 implements Serializable {
     @Id
     @GeneratedValue
     private long id;
+    @ManyToOne
     private Patient patient;
+    @ManyToOne
     private Doctor doctor;
     @NotNull
     @NotEmpty(message = "Place can't be empty.")

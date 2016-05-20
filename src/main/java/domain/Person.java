@@ -11,12 +11,10 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
-import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -50,9 +48,8 @@ public abstract class Person {
     @OneToOne(cascade={CascadeType.PERSIST},fetch=FetchType.LAZY)
     @JoinColumn(name="ADRESS_ID")
     /**@JsonManagedReference**/
-    @NotNull
-    @NotEmpty
     private Address address;
+   
   
 
     public Person( long id,String firstName, String lastName, String passportId,Address address, int age) {
@@ -129,7 +126,8 @@ public abstract class Person {
         this.address = address;
     }
 
- 
+
+    
     
     
     
