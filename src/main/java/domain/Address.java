@@ -25,6 +25,7 @@ public class Address {
     @Id
     @GeneratedValue
     private long id;
+   
     @NotNull
     @NotEmpty(message = "Housenumber can't be empty.")
     private String houseNumber;

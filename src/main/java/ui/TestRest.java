@@ -25,25 +25,30 @@ import service.DatabaseFacade;
 public class TestRest {
     public static void main(String[] args) throws IOException{
        RestTemplate restTemplate = new RestTemplate();
-       String response = restTemplate.getForObject("http://api.apixu.com/v1/current.json?key=aebe5a3f024040ff9bf112640160705&q=Brussel", String.class);
-       System.out.println(response.toString());
+       Current response = restTemplate.getForObject("http://api.apixu.com/v1/current.json?key=aebe5a3f024040ff9bf112640160705&q=Brussel", Current.class);
+       //System.out.println(response.getConditions().toString());
+       
+       
+       
+       //System.out.println(response.toString());
         
         //RestTemplate restTemplate = new RestTemplate();
-        //ObjectMapper jacksonObjectMapper = new ObjectMapper();
+        ObjectMapper jacksonObjectMapper = new ObjectMapper();
         
-        //LinkedHashMap map= restTemplate.getForObject("http://api.apixu.com/v1/current.json?key=aebe5a3f024040ff9bf112640160705&q=Brussel", LinkedHashMap.class);
+        LinkedHashMap map= restTemplate.getForObject("http://api.apixu.com/v1/current.json?key=aebe5a3f024040ff9bf112640160705&q=Brussel", LinkedHashMap.class);
         //Weather weatherDescription = jacksonObjectMapper.convertValue(map.get("current"), Weather.class);
       
-        //Current weatherCondition = jacksonObjectMapper.convertValue(map.get("condition"), Current.class);
+        String weatherCondition = jacksonObjectMapper.convertValue(map.get("condition"), String.class);
 
       //  Current current = restTemplate.getForObject("http://api.apixu.com/v1/current.json?key=aebe5a3f024040ff9bf112640160705&q=Brussel", Current.class);
-       DatabaseFacade service = new DatabaseFacade();
+      // DatabaseFacade service = new DatabaseFacade();
       
        // System.out.println(service.getWeather());
-       // System.out.println(current.getConditions().get(0).getCurrent());
-       System.out.println(service.getWeather());
+        System.out.println(weatherCondition.toString());
+      // System.out.println(service.getWeather());
+      
     }
     
-}
+} 
 
 /**http://api.apixu.com/v1/current.json?key=aebe5a3f024040ff9bf112640160705&q=Paris**/

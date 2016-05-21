@@ -33,17 +33,13 @@ public abstract class Person {
     @Id
     @GeneratedValue
     private long id;
-    @NotNull
-    @NotEmpty(message = "Firstname can't be empty.")
+ 
     private String firstName;
-    @NotNull
-    @NotEmpty(message = "Lastname can't be empty.")
+   
     private String lastName;
-    @NotNull
-    @NotEmpty(message = "PassportId can't be empty.")
+    
     private String passportId;
-    @NotNull
-    @Min(0)
+    
     private int age;
     @OneToOne(cascade={CascadeType.PERSIST},fetch=FetchType.LAZY)
     @JoinColumn(name="ADRESS_ID")
