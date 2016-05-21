@@ -7,6 +7,7 @@ package database.appointment;
 
 
 import domain.Appointment1;
+import domain.Doctor;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -58,6 +59,12 @@ public class DatabaseAppointmentHashMap implements DatabaseAppointment {
 
     @Override
     public void close() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
+    @Override
+    public List<Appointment1> makeAgenda(Doctor doctor, String date) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

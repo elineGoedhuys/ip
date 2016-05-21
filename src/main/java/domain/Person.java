@@ -118,28 +118,17 @@ public abstract class Person {
         return address;
     }
 
+    @JsonIgnore
     public void setAddress(Address address) {
         this.address = address;
     }
 
-
-    
-    
-    
-    
-            
-            
+     
       public boolean equals(Person person){
         return(person.getFirstName().equals(this.firstName) && person.getLastName().equals(this.lastName)
                 && person.getPassportId().equals(this.passportId) 
                 && person.getAge() == this.age);
     }
-    
-    /**public String toString(){
-        return "Firstname: " + this.getFirstName() + " Lastname: " + this.getLastName() +
-                " PassportId: " + this.getPassportId() + " Age: "+this.getAge() 
-                + " Address: " +this.getAddress().toString();
-    }**/
     
 }
 

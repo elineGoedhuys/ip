@@ -79,6 +79,7 @@ public class Doctor extends Person implements Serializable {
         return appointments;
     }
 
+    @JsonIgnore
     public void setAppointments(Set<Appointment1> appointments) {
         this.appointments = appointments;
     }

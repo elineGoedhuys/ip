@@ -116,6 +116,12 @@ public class DatabaseAppointmentDB implements DatabaseAppointment{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+
+    @Override
+    public List<Appointment1> makeAgenda(Doctor doctor, String date) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
    
     
     

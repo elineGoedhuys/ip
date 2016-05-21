@@ -109,4 +109,8 @@ public class Appointment1 implements Serializable {
         return this.getDoctor().toString() + this.getPatient().toString() + this.getDate();
                 
     }
+    
+    public boolean makeAgenda(Doctor doctor, String date){
+        return this.getDate().equalsIgnoreCase(date) && this.getDoctor().equals(doctor);
+    }
 }

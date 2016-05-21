@@ -7,6 +7,7 @@ package database.appointment;
 
 
 import domain.Appointment1;
+import domain.Doctor;
 import java.util.List;
 
 /**
@@ -20,5 +21,6 @@ public interface DatabaseAppointment {
     public void delete(long appointmentId);
     public Appointment1 getAppointment(long appointmentId);
     public void close();
+    public List<Appointment1> makeAgenda(Doctor doctor, String date);
 
 }

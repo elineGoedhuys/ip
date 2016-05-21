@@ -6,7 +6,12 @@
 package database.appointment;
 
 import domain.Appointment1;
+import domain.Doctor;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -128,5 +133,25 @@ public class AppointmentRelationalDatabase implements DatabaseAppointment {
         }
     }
 
+
+
+    @Override
+    public List<Appointment1> makeAgenda(Doctor doctor, String date) {
+      List<Appointment1> results = new ArrayList<Appointment1>();
+        try{
+            List<Appointment1> apps = this.read();
+            for(int i = 0; i != apps.size(); i++){
+                if((apps.get(i).makeAgenda(doctor, date)) == true){
+                    results.add(apps.get(i));
+                }
+            }
+            return results;
+        }catch(Exception e){
+            throw new DbException();
+        }
+    }
+
   
+    
+    
 }

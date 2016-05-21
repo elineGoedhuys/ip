@@ -166,4 +166,8 @@ public class DatabaseFacade {
     public String getWeather(){
         return restWeather.getWeather();
     }
+    
+    public List<Appointment1> makeAgenda(Doctor doctor, String date){
+        return appointmentfacade.makeAgenda(doctor, date);
+    }
 }

@@ -26,15 +26,15 @@ public class TestService {
        /**service.newPatient(patient);
         System.out.println(service.getPatients());**/
       DatabaseFacade service = new DatabaseFacade();
-       Person doctor = new Doctor("Jan","Janssens","BE2456543",address,33);
+       //Person doctor = new Doctor("Jan","Janssens","BE2456543",address,33);
         //service.newDoctor(doctor);
         //System.out.println(service.getDoctors());
        /**service.deletePatient(651);**/
-      Patient p = service.getPatientOnId(901);
-      Doctor d = service.getDoctorOnId(851);
-     Appointment1 app = new Appointment1(p,d,"hospital","08:00","12 Juni 2016");
-      service.makeAppointment(app);
-
+      //Patient p = service.getPatientOnId(901);
+      //Doctor d = service.getDoctorOnId(851);
+     //Appointment1 app = new Appointment1(p,d,"hospital","08:00","12 Juni 2016");
+      //service.makeAppointment(app);
+        System.out.println(service.makeAgenda(service.getDoctorOnId(1553), "05/30/2016"));
       // service.newPatient(patient);
        ////System.out.println(p.toString());
        // System.out.println(d.toString());

@@ -7,6 +7,7 @@ package database.appointment;
 
 
 import domain.Appointment1;
+import domain.Doctor;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,6 +48,10 @@ public class DatabaseAppointmentFacade {
 
     public Appointment1 getAppointmentOnId(int appointmentId){
         return dbappointment.getAppointment(appointmentId);
+    }
+    
+    public List<Appointment1> makeAgenda(Doctor doctor, String date){
+        return dbappointment.makeAgenda(doctor, date);
     }
    
     public void close(){
