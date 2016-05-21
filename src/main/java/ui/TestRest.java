@@ -25,26 +25,26 @@ import service.DatabaseFacade;
 public class TestRest {
     public static void main(String[] args) throws IOException{
        RestTemplate restTemplate = new RestTemplate();
-       Current response = restTemplate.getForObject("http://api.apixu.com/v1/current.json?key=aebe5a3f024040ff9bf112640160705&q=Brussel", Current.class);
+       String response = restTemplate.getForObject("http://api.apixu.com/v1/current.json?key=aebe5a3f024040ff9bf112640160705&q=Brussel", String.class);
        //System.out.println(response.getConditions().toString());
-       
+       System.out.println(response.toString());
        
        
        //System.out.println(response.toString());
         
         //RestTemplate restTemplate = new RestTemplate();
-        ObjectMapper jacksonObjectMapper = new ObjectMapper();
+       // ObjectMapper jacksonObjectMapper = new ObjectMapper();
         
-        LinkedHashMap map= restTemplate.getForObject("http://api.apixu.com/v1/current.json?key=aebe5a3f024040ff9bf112640160705&q=Brussel", LinkedHashMap.class);
+       // LinkedHashMap map= restTemplate.getForObject("http://api.apixu.com/v1/current.json?key=aebe5a3f024040ff9bf112640160705&q=Brussel", LinkedHashMap.class);
         //Weather weatherDescription = jacksonObjectMapper.convertValue(map.get("current"), Weather.class);
       
-        String weatherCondition = jacksonObjectMapper.convertValue(map.get("condition"), String.class);
+        //String weatherCondition = jacksonObjectMapper.convertValue(map.get("current"), String.class);
 
       //  Current current = restTemplate.getForObject("http://api.apixu.com/v1/current.json?key=aebe5a3f024040ff9bf112640160705&q=Brussel", Current.class);
       // DatabaseFacade service = new DatabaseFacade();
       
        // System.out.println(service.getWeather());
-        System.out.println(weatherCondition.toString());
+       // System.out.println(weatherCondition.toString());
       // System.out.println(service.getWeather());
       
     }

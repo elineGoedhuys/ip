@@ -54,15 +54,12 @@ public class AppointmentRelationalDatabase implements DatabaseAppointment {
     public void create(Appointment1 appointment) throws DbException {
         try {
             openConnection();
-            List<Appointment1> apps = this.read();
-            if(apps.contains(appointment)){
-                throw new IllegalArgumentException("You can't make an appointment at this moment.");
-            }else{
+            
             manager.getTransaction().begin();
             manager.persist(appointment);
             manager.flush();
             manager.getTransaction().commit();
-            }
+            
         } catch (Exception e) {
             manager.getTransaction().rollback();
             throw new DbException(e.getMessage(), e);

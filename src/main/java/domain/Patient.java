@@ -5,6 +5,7 @@
  */
 package domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Entity
 public class Patient extends Person implements Serializable {
     
+
     @OneToMany(mappedBy="patient", cascade=CascadeType.REMOVE)
     private Set<Appointment1> appointments;
     
@@ -39,6 +41,7 @@ public class Patient extends Person implements Serializable {
 
     }
 
+     @JsonIgnore
     public Set<Appointment1> getAppointments() {
         return appointments;
     }

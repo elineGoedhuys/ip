@@ -1,6 +1,7 @@
 package domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import database.doctor.DatabaseDoctorFacade;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -73,6 +74,7 @@ public class Doctor extends Person implements Serializable {
         return super.getPassportId(); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @JsonIgnore
     public Set<Appointment1> getAppointments() {
         return appointments;
     }

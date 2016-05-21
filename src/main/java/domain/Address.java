@@ -99,44 +99,44 @@ public class Address {
     
 
     public void setCountry(String country) {
-        if(country.isEmpty() || country.equals("")){
-            throw new IllegalArgumentException("Country can't be empty.");
-        }
+        //if(country.isEmpty() || country.equals("")){
+          //  throw new IllegalArgumentException("Country can't be empty.");
+        //}
         this.country = country;
     }
 
     public void setHouseNumber(String houseNumber) {
-        if(houseNumber.isEmpty() || houseNumber.equals("")){
-            throw new IllegalArgumentException("Housenumber can't be empty.");
-        }
+        //if(houseNumber.isEmpty() || houseNumber.equals("")){
+          //  throw new IllegalArgumentException("Housenumber can't be empty.");
+        //}
         this.houseNumber = houseNumber;
     }
 
     public void setRegion(String region) {
-        if(region.isEmpty() || region.equals("")){
-            throw new IllegalArgumentException("Region can't be empty.");
-        }
+       // if(region.isEmpty() || region.equals("")){
+         //   throw new IllegalArgumentException("Region can't be empty.");
+        //}
         this.region = region;
     }
 
     public void setStreet(String street) {
-        if(street.isEmpty() || street.equals("")){
-            throw new IllegalArgumentException("Street can't be empty.");
-        }
+        //if(street.isEmpty() || street.equals("")){
+          //  throw new IllegalArgumentException("Street can't be empty.");
+        //}
         this.street = street;
     }
 
     public void setTown(String town) {
-        if(town.isEmpty() || town.equals("")){
-            throw new IllegalArgumentException("Town can't be empty.");
-        }
+        //if(town.isEmpty() || town.equals("")){
+          //  throw new IllegalArgumentException("Town can't be empty.");
+        //}
         this.town = town;
     }
 
     public void setZipCode(String zipCode) {
-        if(zipCode.isEmpty() || zipCode.equals("")){
-            throw new IllegalArgumentException("zip code can't be empty");
-        }
+        //if(zipCode.isEmpty() || zipCode.equals("")){
+          //  throw new IllegalArgumentException("zip code can't be empty");
+        //}
         this.zipCode = zipCode;
     }
      
@@ -146,9 +146,7 @@ public class Address {
                 + " Country: " + this.getCountry();
     }
 
-    public String getAge() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+  
 
     public long getId() {
         return id;
