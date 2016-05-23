@@ -74,7 +74,7 @@ public class Doctor extends Person implements Serializable {
         return super.getPassportId(); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @JsonIgnore
+   
     public Set<Appointment1> getAppointments() {
         return appointments;
     }

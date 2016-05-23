@@ -20,7 +20,7 @@ public class DatabaseAppointmentFacade {
     public DatabaseAppointmentFactory facade = new DatabaseAppointmentFactory();
     public DatabaseAppointment dbappointment = facade.DatabaseAppointmentFactory("JPA");
     
-    public void makeNewAppointment(Appointment1 app){
+    public void makeNewAppointment(Appointment1 app)throws DbException{
         if(app == null){
             throw new IllegalArgumentException("Appointment can't be made.");
         }
@@ -42,11 +42,11 @@ public class DatabaseAppointmentFacade {
         dbappointment.update(app);
     }
     
-    public void deleteAppointment(int appointmentid){
+    public void deleteAppointment(long appointmentid){
         dbappointment.delete(appointmentid);
     }
 
-    public Appointment1 getAppointmentOnId(int appointmentId){
+    public Appointment1 getAppointmentOnId(long appointmentId){
         return dbappointment.getAppointment(appointmentId);
     }
     

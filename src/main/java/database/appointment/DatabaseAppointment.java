@@ -15,7 +15,7 @@ import java.util.List;
  * @author Eline
  */
 public interface DatabaseAppointment {
-    public void create(Appointment1 appointment);
+    public void create(Appointment1 appointment)throws DbException;
     public List<Appointment1> read();
     public void update(Appointment1 appointment);
     public void delete(long appointmentId);

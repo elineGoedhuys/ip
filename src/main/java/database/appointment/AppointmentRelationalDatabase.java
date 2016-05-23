@@ -59,11 +59,12 @@ public class AppointmentRelationalDatabase implements DatabaseAppointment {
     public void create(Appointment1 appointment) throws DbException {
         try {
             openConnection();
-            
+           
             manager.getTransaction().begin();
             manager.persist(appointment);
             manager.flush();
             manager.getTransaction().commit();
+            
             
         } catch (Exception e) {
             manager.getTransaction().rollback();

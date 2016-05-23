@@ -100,13 +100,15 @@ public class Appointment1 implements Serializable {
     }
 
     public boolean equals(Appointment1 app) {
-        return (app.getDoctor().equals(this.getDoctor()) && (app.getPatient().equals(this.getPatient()))
-                && (app.getUur().equals(this.getUur())) && (app.getPlace().equals(this.getPlace())) );
+        return (app.getDoctor().equals(this.getDoctor()) && (app.getDate().equals(this.getDate()))
+                && (app.getUur().equals(this.getUur()))||
+                app.getPatient().equals(this.getPatient()) && (app.getDate().equals(this.getDate()))
+                && (app.getUur().equals(this.getUur())));
     }
 
     @Override
     public String toString() {
-        return this.getDoctor().toString() + this.getPatient().toString() + this.getDate();
+        return this.getDoctor().getId() + this.getPatient().getId() + this.getDate();
                 
     }
     

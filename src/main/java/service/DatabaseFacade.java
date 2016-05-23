@@ -7,6 +7,7 @@ package service;
 
 import database.address.DatabaseAddressFactory;
 import database.address.DatabaseAddressRepository;
+import database.address.DbException;
 import database.appointment.DatabaseAppointmentFacade;
 import database.appointment.DatabaseAppointmentFactory;
 import database.doctor.DatabaseDoctorFacade;
@@ -92,7 +93,7 @@ public class DatabaseFacade {
         patientfacade.delete(p);
     }
     
-    public void makeAppointment(Appointment1 appointment){
+    public void makeAppointment(Appointment1 appointment)throws DbException{
         appointmentfacade.makeNewAppointment(appointment);
     }
     
@@ -169,5 +170,9 @@ public class DatabaseFacade {
     
     public List<Appointment1> makeAgenda(Doctor doctor, String date){
         return appointmentfacade.makeAgenda(doctor, date);
+    }
+    
+    public void deleteAppointment(long appointmentId){
+        appointmentfacade.deleteAppointment(appointmentId);
     }
 }

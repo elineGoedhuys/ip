@@ -41,7 +41,7 @@ public class Patient extends Person implements Serializable {
 
     }
 
-     @JsonIgnore
+
     public Set<Appointment1> getAppointments() {
         return appointments;
     }
