@@ -17,8 +17,24 @@ import java.util.List;
  */
 public class DatabaseAppointmentFacade {
     
-    public DatabaseAppointmentFactory facade = new DatabaseAppointmentFactory();
-    public DatabaseAppointment dbappointment = facade.DatabaseAppointmentFactory("JPA");
+    //public DatabaseAppointmentFactory facade = new DatabaseAppointmentFactory();
+    //public DatabaseAppointment dbappointment = facade.DatabaseAppointmentFactory("JPA");
+    public DatabaseAppointment dbappointment;
+    
+    public DatabaseAppointmentFacade(String dbType){
+        DatabaseAppointmentFactory ft = new DatabaseAppointmentFactory();
+        setDbappointment(ft.DatabaseAppointmentFactory(dbType));
+    }
+
+    public void setDbappointment(DatabaseAppointment dbappointment) {
+        this.dbappointment = dbappointment;
+    }
+
+    public DatabaseAppointment getDbappointment() {
+        return dbappointment;
+    }
+    
+    
     
     public void makeNewAppointment(Appointment1 app)throws DbException{
         if(app == null){

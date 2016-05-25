@@ -27,19 +27,19 @@ public class TestService {
         
        /**service.newPatient(patient);
         System.out.println(service.getPatients());**/
-       try{
-      DatabaseFacade service = new DatabaseFacade();
+     //  try{
+     // DatabaseFacade service = new DatabaseFacade();
        //Person doctor = new Doctor("Jan","Janssens","BE2456543",address,33);
         //service.newDoctor(doctor);
         //System.out.println(service.getDoctors());
        /**service.deletePatient(651);**/
-      Patient p = service.getPatientOnId(1601);
-      Doctor d = service.getDoctorOnId(3353);
-       Appointment1 app = new Appointment1(p,d,"hospital","08:00","12 Juni 2016");
-       service.makeAppointment(app);
-       }catch(Exception e){
-           System.out.println(e.getMessage());
-       }
+     // Patient p = service.getPatientOnId(1601);
+     // Doctor d = service.getDoctorOnId(3353);
+     //  Appointment1 app = new Appointment1(p,d,"hospital","08:00","12 Juni 2016");
+     //  service.makeAppointment(app);
+     //  }catch(Exception e){
+     //      System.out.println(e.getMessage());
+     //  }
           // System.out.println(p.getId());
           // System.out.println(d.getId());
     // Appointment1 app = new Appointment1(p,d,"hospital","08:00","12 Juni 2016");

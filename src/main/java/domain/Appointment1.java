@@ -25,8 +25,10 @@ public class Appointment1 implements Serializable {
     @Id
     @GeneratedValue
     private long id;
+    
     @ManyToOne
     private Patient patient;
+   
     @ManyToOne
     private Doctor doctor;
     @NotNull

@@ -10,10 +10,10 @@ import database.address.DatabaseAddressRepository;
 import database.address.DbException;
 import database.appointment.DatabaseAppointmentFacade;
 import database.appointment.DatabaseAppointmentFactory;
-import database.doctor.DatabaseDoctorFacade;
 import database.doctor.DatabaseDoctorFactory;
-import database.patient.DatabasePatientFacade;
+import database.doctor.DatabaseDoctorRepository;
 import database.patient.DatabasePatientFactory;
+import database.patient.DatabasePatientRepository;
 import domain.Address;
 import domain.Appointment1;
 import domain.Doctor;
@@ -29,36 +29,48 @@ import rest.RestWeather;
  */
 public class DatabaseFacade {
     
-    private DatabaseDoctorFacade doctorfacade;
-    private DatabasePatientFacade patientfacade;
+    //private DatabaseDoctorFacade doctorfacade;
+    //private DatabasePatientFacade patientfacade;
     private DatabaseAppointmentFacade appointmentfacade;
     private DatabaseAddressRepository addressfacade;
     private RestWeather restWeather;
-    private DatabaseAppointmentFactory appointmentfactory;
-    private DatabaseDoctorFactory doctorfactory;
-    private DatabasePatientFactory patientfactory;
-    private DatabaseAddressFactory addressfactory;
+    //private DatabaseAppointmentFactory appointmentfactory;
+   // private DatabaseDoctorFactory doctorfactory;
+    //private DatabasePatientFactory patientfactory;
+   // private DatabaseAddressFactory addressfactory;
+    private DatabaseDoctorRepository doctorfacade;
+    private DatabasePatientRepository patientfacade;
+    
     
             
-    public void switchDatabse(String type){
-        appointmentfactory.DatabaseAppointmentFactory(type);
-        doctorfactory.DatabaseDoctorFactory(type);
-        patientfactory.DatabasePatientFactory(type);
-        addressfactory.DatabaseAddressFactory(type);
-    }
-    public DatabaseFacade(){
-        doctorfacade = new DatabaseDoctorFacade();
-        patientfacade = new DatabasePatientFacade();
-        appointmentfacade = new DatabaseAppointmentFacade();
-        addressfacade = new DatabaseAddressRepository();
-        restWeather = new RestWeather();
-    }
+   // public void switchDatabse(String type){
+    //    appointmentfactory.DatabaseAppointmentFactory(type);
+    //    doctorfactory.DatabaseDoctorFactory(type);
+    //    patientfactory.DatabasePatientFactory(type);
+    //    addressfactory.DatabaseAddressFactory(type);
+   // }
+    //public DatabaseFacade(){
+      //  doctorfacade = new DatabaseDoctorFacade();
+     //   patientfacade = new DatabasePatientFacade();
+      //  appointmentfacade = new DatabaseAppointmentFacade();
+      //  addressfacade = new DatabaseAddressRepository();
+      //  restWeather = new RestWeather();
+    //}
    
     public DatabaseFacade(String type){
-        doctorfacade = new DatabaseDoctorFacade();
-        patientfacade = new DatabasePatientFacade();
-        appointmentfacade = new DatabaseAppointmentFacade();
-        addressfacade = new DatabaseAddressRepository();
+        //doctorfacade = new DatabaseDoctorFacade();
+        //doctorfactory.DatabaseDoctorFactory(type);
+        //patientfacade = new DatabasePatientFacade();
+        //patientfactory.DatabasePatientFactory(type);
+        //appointmentfacade = new DatabaseAppointmentFacade();
+        //appointmentfactory.DatabaseAppointmentFactory(type);
+        //addressfacade = new DatabaseAddressRepository();
+        //addressfactory.DatabaseAddressFactory(type);
+        doctorfacade = new DatabaseDoctorRepository(type);
+        patientfacade = new DatabasePatientRepository(type);
+        appointmentfacade = new DatabaseAppointmentFacade(type);
+        addressfacade = new DatabaseAddressRepository(type);
+        restWeather = new RestWeather();
     }
     
     public List<Doctor> getDoctors(){

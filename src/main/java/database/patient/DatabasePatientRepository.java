@@ -14,12 +14,24 @@ import java.util.List;
  */
 public class DatabasePatientRepository {
     
-    private DatabasePatientFactory ft = new DatabasePatientFactory();
-    private DatabasePatient db = ft.DatabasePatientFactory("JPA");
+    //private DatabasePatientFactory ft = new DatabasePatientFactory();
+   // private DatabasePatient db = ft.DatabasePatientFactory("JPA");
+    private DatabasePatient db;
     
-    public DatabasePatientRepository(){
-        
+    public DatabasePatientRepository(String DbType){
+        DatabasePatientFactory ft = new DatabasePatientFactory();
+        setDb(ft.DatabasePatientFactory(DbType));
     }
+
+    public DatabasePatient getDb() {
+        return db;
+    }
+
+    public void setDb(DatabasePatient db) {
+        this.db = db;
+    }
+    
+    
     
     public void create(Patient patient){
         if(patient == null){

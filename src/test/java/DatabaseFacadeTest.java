@@ -41,7 +41,7 @@ public class DatabaseFacadeTest {
         this.doctor = new Doctor("Eline","Goedhuys","1223",address,22,1);
         this.doctor1 = new Doctor("Eline","Goedhuys","1223",address,22,2);**/
         
-        databasefacade = new DatabaseFacade();
+       // databasefacade = new DatabaseFacade();
         this.patients = new ArrayList<Patient>();
         this.doctors = new ArrayList<Doctor>();
         //patients.add(patient);

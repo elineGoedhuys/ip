@@ -2,7 +2,6 @@ package domain;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import database.doctor.DatabaseDoctorFacade;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Set;

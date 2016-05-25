@@ -14,12 +14,25 @@ import java.util.List;
  */
 public class DatabaseDoctorRepository {
     
-      private DatabaseDoctorFactory ft = new DatabaseDoctorFactory();
-    private DatabaseDoctor db = ft.DatabaseDoctorFactory("JPA");
+   // private DatabaseDoctorFactory ft = new DatabaseDoctorFactory();
+    //private DatabaseDoctor db = ft.DatabaseDoctorFactory("JPA");
+    private DatabaseDoctor db;
     
-    public DatabaseDoctorRepository(){
-        
+    public DatabaseDoctorRepository(String DbType){
+        DatabaseDoctorFactory ft = new DatabaseDoctorFactory();
+        setDb(ft.DatabaseDoctorFactory(DbType));
     }
+
+    public DatabaseDoctor getDb() {
+        return db;
+    }
+
+    public void setDb(DatabaseDoctor db) {
+        this.db = db;
+    }
+    
+    
+    
     
     public void create(Doctor doctor){
         if(doctor == null){

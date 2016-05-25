@@ -14,12 +14,23 @@ import java.util.List;
  */
 public class DatabaseAddressRepository {
     
-    private DatabaseAddressFactory ft = new DatabaseAddressFactory();
-    private DatabaseAddress db = ft.DatabaseAddressFactory("JPA");
+  
+    private DatabaseAddress db;
     
-    public DatabaseAddressRepository(){
-        
+    public DatabaseAddressRepository(String dbType){
+        DatabaseAddressFactory ft = new DatabaseAddressFactory();
+        setDb(ft.DatabaseAddressFactory(dbType));
     }
+
+    public DatabaseAddress getDb() {
+        return db;
+    }
+
+    public void setDb(DatabaseAddress db) {
+        this.db = db;
+    }
+    
+    
     
     public void create(Address address){
         if(address == null){

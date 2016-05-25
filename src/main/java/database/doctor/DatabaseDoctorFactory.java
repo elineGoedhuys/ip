@@ -14,7 +14,7 @@ public class DatabaseDoctorFactory {
     public DatabaseDoctorFactory(){
         
     }
-    
+
     
     public DatabaseDoctor DatabaseDoctorFactory(String type){
         if(type == null){

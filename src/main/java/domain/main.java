@@ -4,8 +4,7 @@ package domain;
 
 import service.DatabaseFacade;
 import database.appointment.DatabaseAppointmentFacade;
-import database.doctor.DatabaseDoctorFacade;
-import database.patient.DatabasePatientFacade;
+
 import database.patient.DatabasePatientTXT;
 import java.util.ArrayList;
 import java.util.Date;
@@ -98,13 +97,13 @@ public class main {
         
      
             
-            String date = new String("12 maart 2017");        
+           // String date = new String("12 maart 2017");        
             /**Appointment app = new Appointment(123,d.getDoctorId(),p.getPatientId(),date,"somewhere");
             DatabaseAppointmentFacade facade = new DatabaseAppointmentFacade();
             facade.makeNewAppointment(app);
             System.out.println(facade.getAllAppointments().toString());
             System.out.println(app.getAppointmentId());**/
-            DatabaseFacade facade = new DatabaseFacade();
+           // DatabaseFacade facade = new DatabaseFacade();
             /**facade.newDoctor(d);
             System.out.println(facade.getPatients());
             System.out.println(facade.getDoctors());
