@@ -40,8 +40,6 @@ public class Patient extends Person implements Serializable {
         super(firstName,lastName,passportId,address,age);
 
     }
-
-
     public Set<Appointment1> getAppointments() {
         return appointments;
     }
@@ -50,19 +48,7 @@ public class Patient extends Person implements Serializable {
     public void setAppointments(Set<Appointment1> appointments) {
         this.appointments = appointments;
     }
-   
-    
-    
-    
-    /** public Patient(long id, String firstName, String lastName, String passportId, Address address, int age){
-        super(id,firstName,lastName,passportId,address,age);
-    }**/
-    
-    /****/
-    
-    /**
-     *
-     */
+ 
     public Patient(){
         
     }
@@ -95,7 +81,13 @@ public class Patient extends Person implements Serializable {
     public String getPassportId() {
         return super.getPassportId(); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
+    @Override
+    @NotNull
+    @NotEmpty(message = "Street can't be empty.")
+    public String getStreet(){
+        return super.getStreet();
+    }
   
     
     /**public String toString(){

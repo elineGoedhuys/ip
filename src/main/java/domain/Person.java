@@ -22,6 +22,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 
+
 /**
  *
  * @author Eline
@@ -122,6 +123,48 @@ public abstract class Person {
     public void setAddress(Address address) {
         this.address = address;
     }
+    
+    @NotNull
+    @NotEmpty(message = "Street can't be empty")
+    public String getStreet(){
+        return address.getStreet();
+    }
+    
+    @NotNull
+    @NotEmpty(message = "HouseNumber can't be empty")
+    public String getHouseNumber(){
+        return address.getHouseNumber();
+    }
+    
+    @NotNull
+    @NotEmpty(message = "Zipcode can't be empty")
+    public String getZipCode(){
+        return address.getZipCode();
+    }
+    
+     @NotNull
+    @NotEmpty(message = "Town can't be empty")
+    public String getTown(){
+        return address.getTown();
+    }
+    
+    @NotNull
+    @NotEmpty(message = "Region can't be empty")
+    public String getRegion(){
+        return address.getRegion();
+    }
+    
+    @NotNull
+    @NotEmpty(message = "Country can't be empty")
+    public String getCountry(){
+        return address.getCountry();
+    }
+    
+    
+    
+    
+    
+    
 
      
       public boolean equals(Person person){
